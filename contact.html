@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>shareyourFY</title>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/form.css">
+</head>
+<body>
+    <header class="text-gray-500 bg-gray-900 body-font" style="padding-bottom: 100px; z-index: -1;">
+        <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center" style="position: fixed; background-color: #1A202C;">
+            <a class="flex title-font font-medium items-center text-white mb-4 md:mb-0">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round"
+                    stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full"
+                    viewBox="0 0 24 24">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                </svg>
+                <span class="ml-3 text-xl">shareyourFY</span>
+            </a>
+            <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
+                <a class="mr-5 hover:text-white" style="cursor: pointer;" href="./index.html">Home</a>
+                <a class="mr-5 hover:text-white" style="cursor: pointer;" href="./about.html">About</a>
+                <a class="mr-5 hover:text-white" style="cursor: pointer;" href="./services.html">Services</a>
+                <a class="mr-5 hover:text-white" style="color: #667EEA; cursor: pointer;"><b>Contact</b></a>
+            </nav>
+            <button id="myBtn"
+                class="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0">Login
+                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+                    <path d="M5 12h14M12 5l7 7-7 7"></path>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <div id="myModal" class="modal">
+        <div class="modal-content" style="background-color: #1A202C;">
+            <span class="close">&times;</span>
+            <div class="form-container sign-up-container">
+                <form action="#">
+                    <h1 style="color: floralwhite;">SignUp with</h1>
+                    <div class="social-container" style="padding-bottom: 7px; padding-top: 5px;">
+                        <a href="#" class="social" style="color: gray; padding-right: 15px;"><i style="padding: 3px 3px 3px 3px; color: #667EEA;" class="fa fa-facebook"></i>Facebook</a>
+                        <a href="#" class="social" style="color: gray;"><i style="padding: 3px 3px 3px 3px; color: #667EEA;" class="fa fa-google"></i>Google</a>
+                    </div>
+                    <span style="padding-bottom: 10px; color: floralwhite;">Sign-In</span>
+                    <input type="text" style="border-width: 3px; border-color: #667EEA; width: 300px; height: 35px;" name="un" id="Username" placeholder="Username">
+                    <span style="padding-bottom: 10px;"></span>
+                    <input type="password" style="border-width: 3px; border-color: #667EEA; width: 300px; height: 35px;" name="pwd" id="Pwd" placeholder="Password">
+                    <span style="padding-bottom: 20px;"></span>
+                    <button type="submit" name="sub" id="SignUp" style="color: floralwhite; background-color: #667EEA; border-radius: 5px; width: 80px; height: 30px;">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <section class="text-gray-500 bg-gray-900 body-font relative">
+        <h1 style="font-size: xx-large; padding-left: 50px; color: aliceblue;">Contact Us |</h1>
+        <div class="container px-5 py-24 mx-auto flex sm:flex-no-wrap flex-wrap">
+          <div class="lg:w-2/3 md:w-1/2 bg-gray-900 rounded-lg overflow-hidden sm:mr-10 p-10 flex items-end justify-start relative">
+            <iframe class="absolute inset-0" marginheight="0" marginwidth="0" scrolling="no" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3767.485466517589!2d73.1178398143789!3d19.2176630524994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be795b97f29ea7f%3A0x30a339e87761072f!2sDeshmukh%20Complex%2C%20Dombivli!5e0!3m2!1sen!2sin!4v1598538781731!5m2!1sen!2sin" width="100%" height="100%" frameborder="0" style="border:0;"></iframe>
+            <div class="bg-gray-900 relative flex flex-wrap py-6">
+              <div class="lg:w-1/2 px-6">
+                <h2 class="title-font font-medium text-white tracking-widest text-sm">ADDRESS</h2>
+                <p class="leading-relaxed">Deshmukh complex, Near Tata Power House, Dombivli (East) - 421 203</p>
+              </div>
+              <div class="lg:w-1/2 px-6 mt-4 lg:mt-0">
+                <h2 class="title-font font-medium text-white tracking-widest text-sm">EMAIL</h2>
+                <a class="text-indigo-500 leading-relaxed">sampritchaurasiya07@gmail.com</a>
+                <h2 class="title-font font-medium text-white tracking-widest text-sm mt-4">PHONE</h2>
+                <p class="leading-relaxed">+91-865-272-7374</p>
+              </div>
+            </div>
+          </div>
+          <div class="lg:w-1/3 md:w-1/2 flex flex-col md:ml-auto w-full md:py-8 mt-8 md:mt-0">
+            <h2 class="text-white text-lg mb-1 font-medium title-font">Feedback</h2>
+            <p class="leading-relaxed mb-5 text-gray-600">Your Feedback will let us improve and so it is IMP! for US..</p>
+            <input class="bg-gray-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-white px-4 py-2 mb-4" placeholder="Name" type="text">
+            <input class="bg-gray-800 rounded border border-gray-700 focus:outline-none focus:border-indigo-500 text-base text-white px-4 py-2 mb-4" placeholder="Email" type="email">
+            <textarea class="bg-gray-800 rounded border border-gray-700 focus:outline-none h-32 focus:border-indigo-500 text-base text-white px-4 py-2 mb-4 resize-none" placeholder="Feedback"></textarea>
+            <button class="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Submit</button>
+          </div>
+        </div>
+      </section>
+
+    <footer class="text-gray-500 bg-gray-900 body-font">
+        <div class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
+            <a class="flex title-font font-medium items-center md:justify-start justify-center text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round"
+                    stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full"
+                    viewBox="0 0 24 24">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                </svg>
+                <span class="ml-3 text-xl">shareyourFY</span>
+            </a>
+            <p class="text-sm text-gray-600 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-800 sm:py-2 sm:mt-0 mt-4">©
+                2020 shareyourFY —
+                <a href="https://twitter.com/Samprit_07" class="text-gray-500 ml-1" target="_blank"
+                    rel="noopener noreferrer">@Samprit_07</a>
+            </p>
+            <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
+                <a class="text-gray-600" style="cursor: pointer;" href="https://github.com/Samprit1712/">
+                    <i class="fa fa-lg fa-github" aria-hidden="true"></i>
+                </a>
+                <a class="ml-3 text-gray-600" style="cursor: pointer;" href="https://linkedin.com/in/sampritchaurasiya1712/">
+                    <i class="fa fa-lg fa-linkedin-square" aria-hidden="true"></i>
+                </a>
+                <a class="ml-3 text-gray-600" style="cursor: pointer;" href="mailto:sampritchaurasiya07@gmail.com">
+                    <i class="fa fa-lg fa-google-plus" aria-hidden="true"></i>
+                </a>
+                <a class="ml-3 text-gray-600" style="cursor: pointer;" href="https://instagram.com/Samprit1712">
+                    <i class="fa fa-lg fa-instagram" aria-hidden="true"></i>
+                </a>
+            </span>
+        </div>
+    </footer>
+
+    <script>
+        var modal = document.getElementById("myModal");
+
+        // Get the button that opens the modal
+        var btn = document.getElementById("myBtn");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks on the button, open the modal
+        btn.onclick = function () {
+            modal.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+
+</body>
+</html>
