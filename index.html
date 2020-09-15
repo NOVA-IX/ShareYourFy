@@ -4,240 +4,134 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>shareyourFY</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/fontawesome.min.css" integrity="sha512-8jdwayz5n8F2cnW26l9vpV6+yGOcRAqz6HTu+DQ3FtVIAts2gTdlFZOGpYhvBMXkWEgxPN3Y22UWyZXuDowNLA==" crossorigin="anonymous" />
-    <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="css/form.css">
+    <title>Learning API</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 
-<body>
-    <header class="text-gray-500 navbar bg-gray-900 body-font" style="padding-bottom: 100px;">
-        <div class="container navbar-fixed mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center"
-            style="position: fixed; background-color: #1A202C;">
-            <a class="flex title-font font-medium items-center text-white mb-4 md:mb-0">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round"
-                    stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full"
-                    viewBox="0 0 24 24">
-                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-                </svg>
-                <span class="ml-3 text-xl">shareyourFY</span>
-            </a>
-            <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
-                <a class="mr-5 hover:text-white" style="color: #667EEA; cursor: pointer;"><b>Home</b></a>
-                <a class="mr-5 hover:text-white" style="cursor: pointer;" href="./about.html">About</a>
-                <a class="mr-5 hover:text-white" style="cursor: pointer;" href="./services.html">Services</a>
-                <a class="mr-5 hover:text-white" style="cursor: pointer;" href="./contact.html">Contact</a>
-            </nav>
-            <button id="myBtn"
-                class="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0">Login
-                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    class="w-4 h-4 ml-1" viewBox="0 0 24 24">
-                    <path d="M5 12h14M12 5l7 7-7 7"></path>
-                </svg>
-            </button>
-        </div>
-    </header>
+<body style="background-color: rgb(8, 26, 88); overflow-x: hidden; word-wrap: break-word;">
 
-    <div id="myModal" class="modal">
-        <div class="modal-content" style="background-color: #1A202C;">
-            <span class="close">&times;</span>
-            <div class="form-container sign-up-container">
-                <form action="#">
-                    <span style="padding-bottom: 10px; color: floralwhite; padding-top: 10px;">Sign-In</span>
-                    <input type="text" style="border-width: 3px; border-color: #667EEA; width: 300px; height: 35px;" name="un" id="Username" placeholder="Username">
-                    <span style="padding-bottom: 10px;"></span>
-                    <input type="password" style="border-width: 3px; border-color: #667EEA; width: 300px; height: 35px;" name="pwd" id="Pwd" placeholder="Password">
-                    <span style="padding-bottom: 20px;"></span>
-                    <button type="submit" name="sub" id="SignUp" style="color: floralwhite; background-color: #667EEA; border-radius: 5px; width: 80px; height: 30px;">Login</button>
-                    <h1 style="color: gray; padding-top: 20px; padding-bottom: 15px;">or<br></h1>
-                    <h1 style="color: floralwhite;">SignUp with</h1>
-                    <div class="social-container" style="padding-bottom: 10px;">
-                        <a href="#" class="social" style="color: gray; padding-right: 15px;"><i style="padding: 3px 3px 3px 3px; color: #667EEA;" class="fa fa-facebook"></i>Facebook</a>
-                        <a href="#" class="social" style="color: gray;"><i style="padding: 3px 3px 3px 3px; color: #667EEA;" class="fa fa-google"></i>Google</a>
-                    </div>
-                </form>
-            </div>
+    <div class="text-center" style="padding-top: 50px; color: aqua;">
+        <h1 class="display-6">Hello World! Get here the funniest jokes..</h1>
+        <p class="lead">Get started by clicking Random button</p>
+    </div>
+
+    <div id="jokebox" class="text-center text-light" style="padding-top: 100px; padding-right: 15%; padding-left: 15%;">
+    </div>
+
+    <div class="text-center" style="padding-top: 100px;">
+        <button onclick="getRandom()" type="button" class="btn btn-primary">Random</button>
+        <button onclick="getCategList()" type="button" class="btn btn-primary">Categories</button>
+        <div style="padding-top: 20px; padding-bottom: 50px;">
+            <input type="text" id="searchcategory"
+                style="background-color: gray; color: floralwhite; width: 200px; cursor: pointer;">
+            <button onclick="getSearchedByCategory()" class="btn btn-primary" type="button">Search by Category</button>
+            <br><br>
+            <input type="text" id="searchtext"
+                style="background-color: gray; color: floralwhite; width: 200px; cursor: pointer;">
+            <button onclick="getSearchedByKeyWord()" class="btn btn-primary" type="button">Search by KeyWord</button>
         </div>
     </div>
 
-    <section class="text-gray-500 bg-gray-900 body-font">
-        <div class="accident">
-            <figure class="icon-cards mt-3">
-                <div class="icon-cards__content">
-                    <div class="icon-cards__item d-flex align-items-center justify-content-center">
-                        <div class="carousel-caption">
-                            <img class="d-block img-fluid" src="img/david-travis-5bYxXawHOQg-unsplash.jpg" height="auto"
-                                width="auto" alt="Subject Notes">
-                        </div>
-                    </div>
-                    <div class="icon-cards__item d-flex align-items-center justify-content-center">
-                        <div class="carousel-caption">
-                            <img class="d-block img-fluid" src="img/benjamin-smith-BQOlMDtb9e8-unsplash.jpg"
-                                alt="ED Instruments">
-                        </div>
-                    </div>
-                    <div class="icon-cards__item d-flex align-items-center justify-content-center">
-                        <div class="carousel-caption">
-                            <img class="d-block img-fluid" src="img/kevin-ku-w7ZyuGYNpRQ-unsplash.jpg" alt="CP Codes">
-                        </div>
-                    </div>
-                    <div class="icon-cards__item d-flex align-items-center justify-content-center">
-                        <div class="carousel-caption">
-                            <img class="d-block img-fluid" src="img/extmat.png" alt="Extra Materials">
-                        </div>
-                    </div>
-                </div>
-            </figure>
-        </div>
-        <div class="container px-5 py-24 mx-auto">
-            <div class="flex items-center lg:w-3/5 mx-auto border-b pb-10 mb-10 border-gray-800 sm:flex-row flex-col">
-                <div
-                    class="sm:w-32 sm:h-32 h-20 w-20 sm:mr-10 inline-flex items-center justify-center rounded-full text-indigo-400 bg-gray-800 flex-shrink-0">
-                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                        stroke-width="2" class="sm:w-16 sm:h-16 w-10 h-10" viewBox="0 0 24 24">
-                        <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
-                    </svg>
-                </div>
-                <div class="flex-grow sm:text-left text-center mt-6 sm:mt-0">
-                    <h2 class="text-white text-lg title-font font-medium mb-2">Subject Notes</h2>
-                    <p class="leading-relaxed text-base">Here we present you brilliant platform to refer to some of the
-                        smartest notes left for just like you people from our seniors.</p>
-                    <a class="mt-3 text-indigo-500 inline-flex items-center">Learn More
-                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                            stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
-                            <path d="M5 12h14M12 5l7 7-7 7"></path>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-            <div class="flex items-center lg:w-3/5 mx-auto border-b pb-10 mb-10 border-gray-800 sm:flex-row flex-col">
-                <div class="flex-grow sm:text-left text-center mt-6 sm:mt-0">
-                    <h2 class="text-white text-lg title-font font-medium mb-2">ED Instruments</h2>
-                    <p class="leading-relaxed text-base">Not able to buy new Instruments for Engineering Drawing??
-                        Just travel through our ED Instruments template in service section for available ones.</p>
-                    <a class="mt-3 text-indigo-500 inline-flex items-center">Learn More
-                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                            stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
-                            <path d="M5 12h14M12 5l7 7-7 7"></path>
-                        </svg>
-                    </a>
-                </div>
-                <div
-                    class="sm:w-32 order-first sm:order-none sm:h-32 h-20 w-20 sm:ml-10 inline-flex items-center justify-center rounded-full text-indigo-400 bg-gray-800 flex-shrink-0">
-                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                        stroke-width="2" class="sm:w-16 sm:h-16 w-10 h-10" viewBox="0 0 24 24">
-                        <circle cx="6" cy="6" r="3"></circle>
-                        <circle cx="6" cy="18" r="3"></circle>
-                        <path d="M20 4L8.12 15.88M14.47 14.48L20 20M8.12 8.12L12 12"></path>
-                    </svg>
-                </div>
-            </div>
-            <div class="flex items-center lg:w-3/5 mx-auto border-b pb-10 mb-10 border-gray-800 sm:flex-row flex-col">
-                <div
-                    class="sm:w-32 sm:h-32 h-20 w-20 sm:mr-10 inline-flex items-center justify-center rounded-full text-indigo-400 bg-gray-800 flex-shrink-0">
-                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                        stroke-width="2" class="sm:w-16 sm:h-16 w-10 h-10" viewBox="0 0 24 24">
-                        <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
-                    </svg>
-                </div>
-                <div class="flex-grow sm:text-left text-center mt-6 sm:mt-0">
-                    <h2 class="text-white text-lg title-font font-medium mb-2">CP Codes/Algo</h2>
-                    <p class="leading-relaxed text-base">Get Our seniors' neat codes, flowcharts, algorithms
-                        in CP Codes/Algo template.<br>
-                        Wait, Don't be cheeky, just take that for referance, "code apne se likho bhai" ;P</p>
-                    <a class="mt-3 text-indigo-500 inline-flex items-center">Learn More
-                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                            stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
-                            <path d="M5 12h14M12 5l7 7-7 7"></path>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-            <div class="flex items-center lg:w-3/5 mx-auto sm:flex-row flex-col">
-                <div class="flex-grow sm:text-left text-center mt-6 sm:mt-0">
-                    <h2 class="text-white text-lg title-font font-medium mb-2">Extra Materials</h2>
-                    <p class="leading-relaxed text-base">We have more information and knowledge to provide you fun in
-                        learning.
-                        Just turn your page to our Extra Materials template in service section.</p>
-                    <a class="mt-3 text-indigo-500 inline-flex items-center">Learn More
-                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                            stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
-                            <path d="M5 12h14M12 5l7 7-7 7"></path>
-                        </svg>
-                    </a>
-                </div>
-                <div
-                    class="sm:w-32 order-first sm:order-none sm:h-32 h-20 w-20 sm:ml-10 inline-flex items-center justify-center rounded-full text-indigo-400 bg-gray-800 flex-shrink-0">
-                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                        stroke-width="2" class="sm:w-16 sm:h-16 w-10 h-10" viewBox="0 0 24 24">
-                        <circle cx="6" cy="6" r="3"></circle>
-                        <circle cx="6" cy="18" r="3"></circle>
-                        <path d="M20 4L8.12 15.88M14.47 14.48L20 20M8.12 8.12L12 12"></path>
-                    </svg>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="text-gray-500 bg-gray-900 body-font">
-        <div class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
-            <a class="flex title-font font-medium items-center md:justify-start justify-center text-white">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round"
-                    stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full"
-                    viewBox="0 0 24 24">
-                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-                </svg>
-                <span class="ml-3 text-xl">shareyourFY</span>
-            </a>
-            <p class="text-sm text-gray-600 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-800 sm:py-2 sm:mt-0 mt-4">©
-                2020 shareyourFY —
-                <a href="https://twitter.com/Samprit_07" class="text-gray-500 ml-1" target="_blank"
-                    rel="noopener noreferrer">@Samprit_07</a>
-            </p>
-            <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
-                <a class="text-gray-600" style="cursor: pointer;" href="https://github.com/Samprit1712/">
-                    <i class="fa fa-lg fa-github" aria-hidden="true"></i>
-                </a>
-                <a class="ml-3 text-gray-600" style="cursor: pointer;"
-                    href="https://linkedin.com/in/sampritchaurasiya1712/">
-                    <i class="fa fa-lg fa-linkedin-square" aria-hidden="true"></i>
-                </a>
-                <a class="ml-3 text-gray-600" style="cursor: pointer;" href="mailto:sampritchaurasiya07@gmail.com">
-                    <i class="fa fa-lg fa-google-plus" aria-hidden="true"></i>
-                </a>
-                <a class="ml-3 text-gray-600" style="cursor: pointer;" href="https://instagram.com/Samprit1712">
-                    <i class="fa fa-lg fa-instagram" aria-hidden="true"></i>
-                </a>
-            </span>
-        </div>
-    </footer>
     <script>
-        var modal = document.getElementById("myModal");
 
-        // Get the button that opens the modal
-        var btn = document.getElementById("myBtn");
 
-        // Get the <span> element that closes the modal
-        var span = document.getElementsByClassName("close")[0];
 
-        // When the user clicks on the button, open the modal
-        btn.onclick = function () {
-            modal.style.display = "block";
+        // var req = new XMLHttpRequest();
+        // var url = 'https://api.chucknorris.io/jokes';
+
+        // function getRandom() {
+        //     var random = url + '/random';
+        //     req.open("GET", random);
+        //     req.responseType = 'json';
+        //     req.send();
+
+        //     req.onload = function () {
+        //         const response = JSON.stringify(req.response.value);
+        //         document.getElementById('jokebox').innerHTML = '<h2><b>' + response + '</b></h2>';
+        //     }
+        // }
+
+        // function getCategList() {
+        //     var categ = url + '/categories';
+        //     req.open("GET", categ);
+        //     req.responseType = 'json';
+        //     req.send();
+
+        //     req.onload = function () {
+        //         var results = '';
+        //         let response = (req.response);
+        //         for (ele of response)
+        //             results += ele + " ";
+        //         document.getElementById('jokebox').innerHTML = '<h2><b>' + results + '</b></h2>';
+        //     }
+        // }
+
+        // function getSearchedByKeyWord() {
+        //     var searchText = document.getElementById('searchtext').value;
+        //     var srcTxtUrl = url + '/search?query=' + searchText;
+        //     req.open("GET", srcTxtUrl);
+        //     req.responseType = 'json';
+        //     req.send();
+
+        //     req.onload = function () {
+        //         const response = JSON.stringify(req.response.result[27].value);
+        //         document.getElementById('jokebox').innerHTML = '<h2><b>' + response + '</b></h2>';
+        //     }
+        // }
+
+        // function getSearchedByCategory() {
+        //     var searchCateg = document.getElementById('searchcategory').value;
+        //     var srcCatUrl = url + '/random?category=' + searchCateg;
+        //     req.open("GET", srcCatUrl);
+        //     req.responseType = 'json';
+        //     req.send();
+
+        //     req.onload = function () {
+        //         const response = JSON.stringify(req.response.value);
+        //         document.getElementById('jokebox').innerHTML = '<h2><b>' + response + '</b></h2>';
+        //     }
+        // }
+
+
+
+        const api_url = 'https://api.chucknorris.io/jokes';
+
+        async function getRandom() {
+            let url = api_url + '/random';
+            let response = await fetch(url);
+            let res = await response.json();
+            document.getElementById('jokebox').innerHTML = '<h2><b>' + res.value + '</b></h2>';
         }
 
-        // When the user clicks on <span> (x), close the modal
-        span.onclick = function () {
-            modal.style.display = "none";
+        async function getCategList() {
+            let results = '';
+            let url = api_url + '/categories';
+            let response = await fetch(url);
+            let res = await response.json();
+            for (ele of res)
+                        results += ele + " ";
+            document.getElementById('jokebox').innerHTML = '<h2><b>' + results + '</b></h2>';
         }
 
-        // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function (event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
+        async function getSearchedByCategory() {
+            var searchCateg = document.getElementById('searchcategory').value;
+            var url = api_url + '/random?category=' + searchCateg;
+            let response = await fetch(url);
+            let res = await response.json();
+            document.getElementById('jokebox').innerHTML = '<h2><b>' + res.value + '</b></h2>';
         }
+
+        async function getSearchedByKeyWord() {
+            var searchText = document.getElementById('searchtext').value;
+            var url = api_url + '/search?query=' + searchText;
+            let response = await fetch(url);
+            let res = await response.json();
+            document.getElementById('jokebox').innerHTML = '<h2><b>' + res.result[0].value + '</b></h2>';
+        }
+
+
+
     </script>
 </body>
 
