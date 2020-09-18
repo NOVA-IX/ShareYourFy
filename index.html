@@ -74,9 +74,12 @@
             <span class="close">&times;</span>
             <div class="form-container sign-up-container">
                 <form action="#" id="signup">
-                    <span style="padding-bottom: 10px; color: floralwhite; padding-top: 10px;">Sign Up</span>
+                    <span style="padding-bottom: 10px; color: floralwhite; padding-top: 10px;">Sign-Up</span>
                     <input type="text" style="border-width: 3px; border-color: #667EEA; width: 300px; height: 35px;"
                         name="un2" id="Username2" placeholder="Username">
+                    <span style="padding-bottom: 10px;"></span>
+                    <input type="email" style="border-width: 3px; border-color: #667EEA; width: 300px; height: 35px;"
+                        name="email" id="email" placeholder="E-Mail ID">
                     <span style="padding-bottom: 10px;"></span>
                     <input type="password" style="border-width: 3px; border-color: #667EEA; width: 300px; height: 35px;"
                         name="pwd2" id="Pwd2" placeholder="Password">
@@ -86,7 +89,7 @@
                     <h1 style="color: gray; padding-top: 20px; padding-bottom: 15px;">or<br></h1>
                     <button id="signinbtn"
                         class="inline-flex items-center bg-white-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0"
-                        style="color: floralwhite;">Login
+                        style="color: floralwhite;">Sign In
                         <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                             stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
                             <path d="M5 12h14M12 5l7 7-7 7"></path>
@@ -283,11 +286,13 @@
             document.getElementById('myModal2').style.display = 'none';
         }
 
-        document.getElementById('signupbtn').onclick = function () {
+        document.getElementById('signupbtn').onclick = function (event) {
+            event.preventDefault();
             document.getElementById('myModal2').style.display = 'block';
             document.getElementById('myModal').style.display = 'none';
         }
-        document.getElementById('signinbtn').onclick = function () {
+        document.getElementById('signinbtn').onclick = function (event) {
+            event.preventDefault();
             document.getElementById('myModal2').style.display = 'none';
             document.getElementById('myModal').style.display = 'block';
         }
