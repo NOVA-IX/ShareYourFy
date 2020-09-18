@@ -7,12 +7,14 @@
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>shareyourFY</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/fontawesome.min.css" integrity="sha512-8jdwayz5n8F2cnW26l9vpV6+yGOcRAqz6HTu+DQ3FtVIAts2gTdlFZOGpYhvBMXkWEgxPN3Y22UWyZXuDowNLA==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/fontawesome.min.css"
+        integrity="sha512-8jdwayz5n8F2cnW26l9vpV6+yGOcRAqz6HTu+DQ3FtVIAts2gTdlFZOGpYhvBMXkWEgxPN3Y22UWyZXuDowNLA=="
+        crossorigin="anonymous" />
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/form.css">
 </head>
 
-<body>
+<body onload="logform()">
     <header class="text-gray-500 navbar bg-gray-900 body-font" style="padding-bottom: 100px;">
         <div class="container navbar-fixed mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center"
             style="position: fixed; background-color: #1A202C;">
@@ -44,19 +46,52 @@
         <div class="modal-content" style="background-color: #1A202C;">
             <span class="close">&times;</span>
             <div class="form-container sign-up-container">
-                <form action="#">
+                <form action="#" id="signin">
                     <span style="padding-bottom: 10px; color: floralwhite; padding-top: 10px;">Sign-In</span>
-                    <input type="text" style="border-width: 3px; border-color: #667EEA; width: 300px; height: 35px;" name="un" id="Username" placeholder="Username">
+                    <input type="text" style="border-width: 3px; border-color: #667EEA; width: 300px; height: 35px;"
+                        name="un" id="Username" placeholder="Username">
                     <span style="padding-bottom: 10px;"></span>
-                    <input type="password" style="border-width: 3px; border-color: #667EEA; width: 300px; height: 35px;" name="pwd" id="Pwd" placeholder="Password">
+                    <input type="password" style="border-width: 3px; border-color: #667EEA; width: 300px; height: 35px;"
+                        name="pwd" id="Pwd" placeholder="Password">
                     <span style="padding-bottom: 20px;"></span>
-                    <button type="submit" name="sub" id="SignUp" style="color: floralwhite; background-color: #667EEA; border-radius: 5px; width: 80px; height: 30px;">Login</button>
+                    <button type="submit" name="sub" id="SignInSubmit"
+                        style="color: floralwhite; background-color: #667EEA; border-radius: 5px; width: 80px; height: 30px;">Login</button>
                     <h1 style="color: gray; padding-top: 20px; padding-bottom: 15px;">or<br></h1>
-                    <h1 style="color: floralwhite;">SignUp with</h1>
-                    <div class="social-container" style="padding-bottom: 10px;">
-                        <a href="#" class="social" style="color: gray; padding-right: 15px;"><i style="padding: 3px 3px 3px 3px; color: #667EEA;" class="fa fa-facebook"></i>Facebook</a>
-                        <a href="#" class="social" style="color: gray;"><i style="padding: 3px 3px 3px 3px; color: #667EEA;" class="fa fa-google"></i>Google</a>
-                    </div>
+                    <button id="signupbtn"
+                        class="inline-flex items-center bg-white-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0"
+                        style="color: floralwhite;">Sign Up
+                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                            stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+                            <path d="M5 12h14M12 5l7 7-7 7"></path>
+                        </svg>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="myModal2">
+        <div class="modal-content" style="background-color: #1A202C;">
+            <span class="close">&times;</span>
+            <div class="form-container sign-up-container">
+                <form action="#" id="signup">
+                    <span style="padding-bottom: 10px; color: floralwhite; padding-top: 10px;">Sign Up</span>
+                    <input type="text" style="border-width: 3px; border-color: #667EEA; width: 300px; height: 35px;"
+                        name="un2" id="Username2" placeholder="Username">
+                    <span style="padding-bottom: 10px;"></span>
+                    <input type="password" style="border-width: 3px; border-color: #667EEA; width: 300px; height: 35px;"
+                        name="pwd2" id="Pwd2" placeholder="Password">
+                    <span style="padding-bottom: 20px;"></span>
+                    <button type="submit" name="sub" id="SignUpSubmit"
+                        style="color: floralwhite; background-color: #667EEA; border-radius: 5px; width: 80px; height: 30px;">Register</button>
+                    <h1 style="color: gray; padding-top: 20px; padding-bottom: 15px;">or<br></h1>
+                    <button id="signinbtn"
+                        class="inline-flex items-center bg-white-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0"
+                        style="color: floralwhite;">Login
+                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                            stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+                            <path d="M5 12h14M12 5l7 7-7 7"></path>
+                        </svg>
+                    </button>
                 </form>
             </div>
         </div>
@@ -215,12 +250,14 @@
     </footer>
     <script>
         var modal = document.getElementById("myModal");
+        var modal2 = document.getElementById("myModal2");
 
         // Get the button that opens the modal
         var btn = document.getElementById("myBtn");
 
         // Get the <span> element that closes the modal
         var span = document.getElementsByClassName("close")[0];
+        var span2 = document.getElementsByClassName("close")[1];
 
         // When the user clicks on the button, open the modal
         btn.onclick = function () {
@@ -231,12 +268,28 @@
         span.onclick = function () {
             modal.style.display = "none";
         }
+        span2.onclick = function () {
+            modal2.style.display = "none";
+        }
 
         // When the user clicks anywhere outside of the modal, close it
         window.onclick = function (event) {
             if (event.target == modal) {
                 modal.style.display = "none";
             }
+        }
+
+        function logform() {
+            document.getElementById('myModal2').style.display = 'none';
+        }
+
+        document.getElementById('signupbtn').onclick = function () {
+            document.getElementById('myModal2').style.display = 'block';
+            document.getElementById('myModal').style.display = 'none';
+        }
+        document.getElementById('signinbtn').onclick = function () {
+            document.getElementById('myModal2').style.display = 'none';
+            document.getElementById('myModal').style.display = 'block';
         }
     </script>
 </body>
