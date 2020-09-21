@@ -54,7 +54,7 @@
                     <input type="password" style="border-width: 3px; border-color: #667EEA; width: 300px; height: 35px;"
                         name="pwd" id="Pwd" placeholder="Password">
                     <span style="padding-bottom: 20px;"></span>
-                    <button type="submit" name="sub" id="SignInSubmit"
+                    <button name="sub" id="SignInSubmit"
                         style="color: floralwhite; background-color: #667EEA; border-radius: 5px; width: 80px; height: 30px;">Login</button>
                     <h1 style="color: gray; padding-top: 20px; padding-bottom: 15px;">or<br></h1>
                     <button id="signupbtn"
@@ -84,7 +84,7 @@
                     <input type="password" style="border-width: 3px; border-color: #667EEA; width: 300px; height: 35px;"
                         name="pwd2" id="Pwd2" placeholder="Password">
                     <span style="padding-bottom: 20px;"></span>
-                    <button type="submit" name="sub" id="SignUpSubmit"
+                    <button name="sub" id="SignUpSubmit"
                         style="color: floralwhite; background-color: #667EEA; border-radius: 5px; width: 80px; height: 30px;">Register</button>
                     <h1 style="color: gray; padding-top: 20px; padding-bottom: 15px;">or<br></h1>
                     <button id="signinbtn"
@@ -253,6 +253,23 @@
     </footer>
 
     <script src="js/Login_Signup.js"></script>
-    
+    <script src="js/fireBase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-auth.js"></script>
+    <script>
+        var firebaseConfig = {
+            apiKey: "AIzaSyAgBg9kW5CtGMfQJqTMoIAB2G_LPXH5N_0",
+            authDomain: "alles-klar-67ca5.firebaseapp.com",
+            databaseURL: "https://alles-klar-67ca5.firebaseio.com",
+            projectId: "alles-klar-67ca5",
+            storageBucket: "alles-klar-67ca5.appspot.com",
+            messagingSenderId: "970113052419",
+            appId: "1:970113052419:web:881c001dd6c4cb0bb80336"
+        };
+        firebase.initializeApp(firebaseConfig);
+
+        const auth = firebase.auth();
+    </script>
 </body>
+
 </html>
