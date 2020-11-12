@@ -8,9 +8,21 @@
     <title>shareyourFY</title>
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/form.css">
+    <style>
+        @media (max-width: 650px) {
+            .padtop {
+                padding-top: 100px;
+            }
+        }
+        @media (min-width: 650px) {
+            .padtop {
+                padding-top: 40px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <header class="text-gray-500 bg-gray-900 body-font" style="padding-bottom: 100px; z-index: -1;">
+    <header class="text-gray-500 bg-gray-900 body-font" style="padding-bottom: 100px; z-index: 500;">
         <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center" style="position: fixed; background-color: #1A202C;">
             <a class="flex title-font font-medium items-center text-white mb-4 md:mb-0">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round"
@@ -26,17 +38,19 @@
                 <a class="mr-5 hover:text-white" style="cursor: pointer;" href="./services.html">Services</a>
                 <a class="mr-5 hover:text-white" style="color: #667EEA; cursor: pointer;"><b>Contact</b></a>
             </nav>
-            <button id="myBtn"
-                class="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0">Login
-                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    class="w-4 h-4 ml-1" viewBox="0 0 24 24">
-                    <path d="M5 12h14M12 5l7 7-7 7"></path>
-                </svg>
-            </button>
+            <a href="./login.html">
+                <button id="myBtn"
+                    class="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0">Login
+                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                        stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+                        <path d="M5 12h14M12 5l7 7-7 7"></path>
+                    </svg>
+                </button>
+            </a>
         </div>
     </header>
 
-    <div id="myModal" class="modal">
+    <!-- <div id="myModal" class="modal">
         <div class="modal-content" style="background-color: #1A202C;">
             <span class="close">&times;</span>
             <div class="form-container sign-up-container">
@@ -92,11 +106,11 @@
                 </form>
             </div>
         </div>
-    </div>
+    </div> -->
 
-    <section class="text-gray-500 bg-gray-900 body-font relative">
+    <section class="padtop text-gray-500 bg-gray-900 body-font relative" style="z-index: -1;">
         <h1 style="font-size: xx-large; padding-left: 50px; color: aliceblue;">Contact Us |</h1>
-        <div class="container px-5 py-24 mx-auto flex sm:flex-no-wrap flex-wrap">
+        <div class="container px-5 py-20 mx-auto flex sm:flex-no-wrap flex-wrap">
           <div class="lg:w-2/3 md:w-1/2 bg-gray-900 rounded-lg overflow-hidden sm:mr-10 p-10 flex items-end justify-start relative">
             <iframe class="absolute inset-0" marginheight="0" marginwidth="0" scrolling="no" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3767.485466517589!2d73.1178398143789!3d19.2176630524994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be795b97f29ea7f%3A0x30a339e87761072f!2sDeshmukh%20Complex%2C%20Dombivli!5e0!3m2!1sen!2sin!4v1598538781731!5m2!1sen!2sin" width="100%" height="100%" frameborder="0" style="border:0;"></iframe>
             <div class="bg-gray-900 relative flex flex-wrap py-6">
