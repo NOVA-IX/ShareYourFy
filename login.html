@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="icon" href="./img/logo.png" style="width: max-content; height: max-content;">
     <title>shareyourFY</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/fontawesome.min.css"
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/fontawesome.min.css"
         integrity="sha512-8jdwayz5n8F2cnW26l9vpV6+yGOcRAqz6HTu+DQ3FtVIAts2gTdlFZOGpYhvBMXkWEgxPN3Y22UWyZXuDowNLA=="
         crossorigin="anonymous" />
 
@@ -18,7 +18,7 @@
         }
 
         footer {
-            position: absolute;
+            position: fixed;
             left: 0;
             bottom: 0;
             width: 100%;
@@ -69,13 +69,21 @@
                 padding-top: 6rem;
                 padding-bottom: 6rem;
             }
+            .padtop {
+                padding-top: 60px;
+            }
+        }
+        @media (max-width: 670px) {
+            .padtop {
+                padding-top: 30px;
+            }
         }
     </style>
 </head>
 
 <body style="background-color: #1A202C;">
 
-    <section class="container2" style="padding-top: 60px;">
+    <section class="container2 padtop">
         <div id="card2">
             <figure class="front">
                 <section class="text-gray-500 bg-gray-900 body-font">
