@@ -3,7 +3,7 @@ const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const auth = require('./routes/auth')
 const services = require('./routes/Services/Edroute')
-const session = require('express-session')
+const session = require('cookie-session')
 const cookieParser = require('cookie-parser');
 
 const app = express()
