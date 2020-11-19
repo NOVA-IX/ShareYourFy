@@ -4,16 +4,16 @@ const ED = require('../../models/ED')
 
 router.post("/ed",async (req,res)=>{
     console.log(req.body)
-    const {title,email,phone,description} = req.body
+    // const {title,email,phone,description} = req.body
 
-    const newEd = new ED({
-        title: title,
-        email: email, //TODO: replace with user.email when session is done
-        phone: phone,
-        description: description
-    })
+    // const newEd = new ED({
+    //     title: title,
+    //     email: email, //TODO: replace with user.email when session is done
+    //     phone: phone,
+    //     description: description
+    // })
 
-    await newEd.save()
+    // await newEd.save()
     res.redirect('/services')
 })
 

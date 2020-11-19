@@ -12,32 +12,7 @@
 </head>
 
 <body>
-    <header class="text-gray-500 bg-gray-900 body-font" style="padding-bottom: 100px; z-index: -1;">
-        <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center"
-            style="position: fixed; background-color: #1A202C;">
-            <a class="flex title-font font-medium items-center text-white mb-4 md:mb-0">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round"
-                    stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full"
-                    viewBox="0 0 24 24">
-                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-                </svg>
-                <span class="ml-3 text-xl">shareyourFY</span>
-            </a>
-            <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
-                <a class="mr-5 hover:text-white" style="cursor: pointer;" href="/index">Home</a>
-                <a class="mr-5 hover:text-white" style="cursor: pointer;" href="/about">About</a>
-                <a class="mr-5 hover:text-white" style="color: #667EEA; cursor: pointer;"><b>Services</b></a>
-                <a class="mr-5 hover:text-white" style="cursor: pointer;" href="/contact">Contact</a>
-            </nav>
-            <button id="myBtn"
-                class="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0">Login
-                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    class="w-4 h-4 ml-1" viewBox="0 0 24 24">
-                    <path d="M5 12h14M12 5l7 7-7 7"></path>
-                </svg>
-            </button>
-        </div>
-    </header>
+    <%-include('partials/navbar')%>
 
     <div id="myModal" class="modal">
         <div class="modal-content" style="background-color: #1A202C;">
@@ -175,59 +150,73 @@
         </div>
     </section>
 
-    <footer class="text-gray-500 bg-gray-900 body-font">
-        <div class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
-            <a class="flex title-font font-medium items-center md:justify-start justify-center text-white">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round"
-                    stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full"
-                    viewBox="0 0 24 24">
-                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-                </svg>
-                <span class="ml-3 text-xl">shareyourFY</span>
-            </a>
-            <p class="text-sm text-gray-600 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-800 sm:py-2 sm:mt-0 mt-4">©
-                2020 shareyourFY —
-                <a href="https://twitter.com/Samprit_07" class="text-gray-500 ml-1" target="_blank"
-                    rel="noopener noreferrer">@Samprit_07</a>
-            </p>
-            <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
-                <a class="text-gray-600" style="cursor: pointer;" href="https://github.com/Samprit1712/">
-                    <i class="fa fa-lg fa-github" aria-hidden="true"></i>
-                </a>
-                <a class="ml-3 text-gray-600" style="cursor: pointer;"
-                    href="https://linkedin.com/in/sampritchaurasiya1712/">
-                    <i class="fa fa-lg fa-linkedin-square" aria-hidden="true"></i>
-                </a>
-                <a class="ml-3 text-gray-600" style="cursor: pointer;" href="mailto:sampritchaurasiya07@gmail.com">
-                    <i class="fa fa-lg fa-google-plus" aria-hidden="true"></i>
-                </a>
-                <a class="ml-3 text-gray-600" style="cursor: pointer;" href="https://instagram.com/Samprit1712">
-                    <i class="fa fa-lg fa-instagram" aria-hidden="true"></i>
-                </a>
-            </span>
-        </div>
-    </footer>
+    <%-include('partials/footer')%>
 
     <div id="contnotemodal" class="modal">
         <div class="modal-content" style="background-color: #1A202C;">
             <span class="close" id="cross">&times;</span>
             <div class="form-container sign-up-container">
                 <form action="#" id="contnoteform">
-                    <span style="padding-bottom: 10px; color: floralwhite; padding-top: 10px;">Add Notes Details here!</span>
-                    <input type="text" style="border-width: 3px; width: 300px; height: 35px;"
+                    <span style="padding-bottom: 10px; color: floralwhite; padding-top: 10px;">Add Notes Details
+                        here!</span>
+                    <input type="text" style="border-width: 3px; width: 300px; height: 35px; border-radius: 15px;"
                         name="sub" id="Subject" placeholder="Subject name" required>
                     <span style="padding-bottom: 10px;"></span>
-                    <input type="text" style="border-width: 3px; width: 300px; height: 35px;"
+                    <input type="text" style="border-width: 3px; width: 300px; height: 35px; border-radius: 15px;"
                         name="topic" id="Topic" placeholder="Topic Name" required>
-                        <span style="padding-bottom: 10px;"></span>
-                    <input type="file" style="border-width: 3px; color: #667EEA; width: 300px; height: 35px;"
+                    <span style="padding-bottom: 10px;"></span>
+                    <input type="file"
+                        style="border-width: 3px; color: #667EEA; width: 300px; height: 35px; border-radius: 8px;"
                         name="file" id="File">
-                        <span style="padding-bottom: 10px;"></span>
-                        <h1 style="color: gray; padding-top: 10px; padding-bottom: 15px;">or<br></h1>
-                    <input type="url" style="border-width: 3px; color: #667EEA; width: 300px; height: 35px;"
+                    <span style="padding-bottom: 10px;"></span>
+                    <h1 style="color: gray; padding-top: 10px; padding-bottom: 15px;">or<br></h1>
+                    <input type="url"
+                        style="border-width: 3px; color: #667EEA; width: 300px; height: 35px; border-radius: 15px;"
                         name="url" id="URL" placeholder="Enter URL">
                     <span style="padding-bottom: 20px;"></span>
                     <button type="submit" name="sub" id="contnotesub"
+                        style="color: floralwhite; background-color: #667EEA; border-radius: 5px; width: 80px; height: 30px;">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="cont_ed_modal" class="modal" style="margin: auto;">
+        <div class="modal-content" style="background-color: #1A202C;">
+            <span class="close" id="cross2">&times;</span>
+            <div class="form-container sign-up-container">
+                <form action="/services/ed" id="cont_ed_form" method="POST">
+                    <span style="padding-bottom: 10px; color: #667EEA; padding-top: 10px;">Click on the materials you
+                        want to share -\-></span>
+                    <input type="textbox" style="border-width: 3px; width: 300px; height: 50px; border-radius: 15px;"
+                        name="handover" id="Handover" placeholder="Handover Instruction" required>
+                    <span style="padding-bottom: 10px;"></span>
+                    <input type="tel" pattern="[0-9]{10}"
+                        style="border-width: 3px; width: 300px; height: 35px; border-radius: 15px;" name="contact"
+                        id="Contact" placeholder="Contact Number eg. 9876543210" required>
+                    <span style="padding-bottom: 10px;"></span>
+                    <div style="text-align: left; color: antiquewhite;">
+                        <input type="checkbox" id="ed1" name="ed1">
+                        <label for="ed1"> Roller Scale</label><br>
+                        <span style="padding-bottom: 10px;"></span>
+                        <input type="checkbox" id="ed2" name="ed2">
+                        <label for="ed2"> Mini-Drafter</label><br>
+                        <span style="padding-bottom: 10px;"></span>
+                        <input type="checkbox" id="ed3" name="ed3" value="Bike">
+                        <label for="ed3"> Container</label><br>
+                        <span style="padding-bottom: 10px;"></span>
+                        <input type="checkbox" id="ed4" name="ed4" value="Bike">
+                        <label for="ed4"> Set Squares</label><br>
+                        <span style="padding-bottom: 10px;"></span>
+                        <input type="checkbox" id="ed5" name="ed5" value="Bike">
+                        <label for="ed5"> French Curve</label><br>
+                        <span style="padding-bottom: 10px;"></span>
+                        <input type="checkbox" id="ed6" name="ed6" value="Bike">
+                        <label for="ed6"> Clips</label><br>
+                        <span style="padding-bottom: 10px;"></span>
+                    </div>
+                    <span style="padding-bottom: 10px;"></span>
+                    <button type="submit" name="sub" id="cont_ed_sub"
                         style="color: floralwhite; background-color: #667EEA; border-radius: 5px; width: 80px; height: 30px;">Submit</button>
                 </form>
             </div>
@@ -238,10 +227,18 @@
 
     <script>
         document.getElementById('contnote').onclick = function () {
-            document.getElementById('contnotemodal').style.display = 'block';
+            document.getElementById('contnotemodal').style.display = 'inline-block';
         }
-        document.getElementById('cross').onclick = function() {
+        document.getElementById('cross').onclick = function () {
             document.getElementById('contnotemodal').style.display = 'none';
+        }
+    </script>
+    <script>
+        document.getElementById('conted').onclick = function () {
+            document.getElementById('cont_ed_modal').style.display = 'inline-block';
+        }
+        document.getElementById('cross2').onclick = function () {
+            document.getElementById('cont_ed_modal').style.display = 'none';
         }
     </script>
 

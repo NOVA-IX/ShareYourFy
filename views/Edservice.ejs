@@ -1,0 +1,40 @@
+<!-- Temporary page replace with right page -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<title>shareyourFY</title>
+	<link rel="stylesheet" href="css/index.css">
+	<link rel="stylesheet" href="css/form.css">
+</head>
+
+<body>
+	<!-- This is an example component -->
+	<%-include('partials/navbar')%>
+
+	<div class="blogs__wraper bg-green-300  py-20 px-20">
+
+		<div class="flex justify-between items-center">
+
+			<% data.forEach(item => { %>
+				<div class="blogs bg-white mr-5">
+					<img
+						src="https://images.unsplash.com/photo-1489396160836-2c99c977e970?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
+						class="">
+					<div class="p-5">
+						<h1 class="text-2xl font-bold text-green-800 py-2"><%= item.title%></h1>
+						<p class="bg-white text-sm text-black"><%= item.description%></p>
+						<a href="" class="py-2 px-3 mt-4 px-6 text-white bg-green-500 inline-block rounded"><%= item.phone%></a>
+					</div>
+				</div>
+			<% }) %>
+		</div>
+	</div>
+	<%-include('partials/footer')%>
+</body>
+
+</html>
