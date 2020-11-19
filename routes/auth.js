@@ -5,9 +5,10 @@ const bcrypt = require('bcrypt')
 const router = express.Router()
 
 router.post('/register',async (req,res)=>{
-    const { error } = validate(req.body)
+    // const { error } = validate(req.body)
+    console.log(req.body)
 
-    if (error) return res.status(400).send(error.details[0].message);
+    // if (error) return res.status(400).send(error.details[0].message);
 
     //find an existing user
     var user = await User.findOne({ email: req.body.email });
@@ -21,14 +22,26 @@ router.post('/register',async (req,res)=>{
 
     user.password = await bcrypt.hash(user.password, 10);
     await user.save();
+    res.redirect('/login')
+})
 
-    const token = user.generateAuthToken();
+router.post('/login',async (req,res)=>{
+    // const { error } = validate(req.body)
 
-    res.header("x-auth-token", token).send({
-        _id: user._id,
-        name: user.name,
-        email: user.email
-    });
+    const {name,email,password} = req.body
+
+    // if (error) return res.status(400).send(error.details[0].message);
+
+    var user = await User.findOne({ email: email });
+
+    if(bcrypt.compare(password,user.password)){
+        req.session.user = user
+        console.log(user)
+        console.log(req.session.user)
+        res.redirect('/services')
+    }else{
+        res.redirect('/login')
+    }
 })
 
 module.exports = router

@@ -10,65 +10,7 @@
     <link rel="stylesheet" href="css/form.css">
 </head>
 <body>
-    <%-include('partials/navbar')%>
-
-    <div id="myModal" class="modal">
-        <div class="modal-content" style="background-color: #1A202C;">
-            <span class="close">&times;</span>
-            <div class="form-container sign-up-container">
-                <form action="#" id="signin">
-                    <span style="padding-bottom: 10px; color: floralwhite; padding-top: 10px;">Sign-In</span>
-                    <input type="text" style="border-width: 3px; border-color: #667EEA; width: 300px; height: 35px;"
-                        name="un" id="Username" placeholder="Username">
-                    <span style="padding-bottom: 10px;"></span>
-                    <input type="password" style="border-width: 3px; border-color: #667EEA; width: 300px; height: 35px;"
-                        name="pwd" id="Pwd" placeholder="Password">
-                    <span style="padding-bottom: 20px;"></span>
-                    <button type="submit" name="sub" id="SignInSubmit"
-                        style="color: floralwhite; background-color: #667EEA; border-radius: 5px; width: 80px; height: 30px;">Login</button>
-                    <h1 style="color: gray; padding-top: 20px; padding-bottom: 15px;">or<br></h1>
-                    <button id="signupbtn"
-                        class="inline-flex items-center bg-white-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0"
-                        style="color: floralwhite;">Sign Up
-                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                            stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
-                            <path d="M5 12h14M12 5l7 7-7 7"></path>
-                        </svg>
-                    </button>
-                </form>
-            </div>
-        </div>
-    </div>
-    <div class="modal" id="myModal2">
-        <div class="modal-content" style="background-color: #1A202C;">
-            <span class="close">&times;</span>
-            <div class="form-container sign-up-container">
-                <form action="#" id="signup">
-                    <span style="padding-bottom: 10px; color: floralwhite; padding-top: 10px;">Sign-Up</span>
-                    <input type="text" style="border-width: 3px; border-color: #667EEA; width: 300px; height: 35px;"
-                        name="un2" id="Username2" placeholder="Username">
-                    <span style="padding-bottom: 10px;"></span>
-                    <input type="email" style="border-width: 3px; border-color: #667EEA; width: 300px; height: 35px;"
-                        name="email" id="email" placeholder="E-Mail ID">
-                    <span style="padding-bottom: 10px;"></span>
-                    <input type="password" style="border-width: 3px; border-color: #667EEA; width: 300px; height: 35px;"
-                        name="pwd2" id="Pwd2" placeholder="Password">
-                    <span style="padding-bottom: 20px;"></span>
-                    <button type="submit" name="sub" id="SignUpSubmit"
-                        style="color: floralwhite; background-color: #667EEA; border-radius: 5px; width: 80px; height: 30px;">Register</button>
-                    <h1 style="color: gray; padding-top: 20px; padding-bottom: 15px;">or<br></h1>
-                    <button id="signinbtn"
-                        class="inline-flex items-center bg-white-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0"
-                        style="color: floralwhite;">Sign In
-                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                            stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
-                            <path d="M5 12h14M12 5l7 7-7 7"></path>
-                        </svg>
-                    </button>
-                </form>
-            </div>
-        </div>
-    </div>
+    <%-include('partials/navbar',{user: user})%>
 
     <section class="text-gray-500 bg-gray-900 body-font relative">
         <h1 style="font-size: xx-large; padding-left: 50px; color: aliceblue;">Contact Us |</h1>
@@ -100,8 +42,5 @@
       </section>
 
     <%-include('partials/footer')%>
-    
-    <script src="js/Login_Signup.js"></script>
-
 </body>
 </html>
