@@ -5,12 +5,11 @@ const EdSchema = new mongoose.Schema({
     title: {
         type: String,
         required: true,
-        minlength: 3,
+        minlength: 1,
         maxlength: 50
     },
     email: {
         type: String,
-        required: true,
         minlength: 5,
         maxlength: 255,
         unique: true
@@ -18,7 +17,7 @@ const EdSchema = new mongoose.Schema({
     phone: {
         type: String,
         required: true,
-        minlength: 3,
+        minlength: 1,
         maxlength: 255
     },
     description: {
