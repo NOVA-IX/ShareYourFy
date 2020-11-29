@@ -10,18 +10,19 @@ const EdSchema = new mongoose.Schema({
     },
     email: {
         type: String,
+        required: true,
         minlength: 5,
         maxlength: 255,
         unique: true
     },
-    phone: {
+    contact: {
         type: String,
         required: true,
         minlength: 1,
         maxlength: 255
     },
-    description: {
-        type: String,
+    instruments: {
+        type: Array,
         required: true
     }
 })

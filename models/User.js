@@ -1,5 +1,3 @@
-const jwt = require('jsonwebtoken')
-// const Joi = require('joi')
 const mongoose = require('mongoose')
 
 const UserSchema = new mongoose.Schema({
@@ -25,13 +23,6 @@ const UserSchema = new mongoose.Schema({
     //give different access rights if admin or not 
     isAdmin: Boolean
 })
-
-
-//custom method to generate authToken 
-UserSchema.methods.generateAuthToken = function () {
-    const token = jwt.sign({ _id: this._id, isAdmin: this.isAdmin }, process.env.jwt_secret) 
-    return token
-}
 
 const User = mongoose.model('User', UserSchema)
 
