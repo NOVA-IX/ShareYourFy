@@ -9,5 +9,5 @@ A platform to share stuffs to help newbies of FE
 - ```npm install``` in terminal
 - ```npm install --dev``` if developer
 - create .env file
-- ```npm start dev```
+- ```npm run dev```
 - http://localhost:5000 to see the site
