@@ -7,5 +7,7 @@ A platform to share stuffs to help newbies of FE
 - clone repo
 - checkout backend branch
 - ```npm install``` in terminal
-- ```node server``` or ```nodemon server```
+- ```npm install --dev``` if developer
+- create .env file
+- ```npm start dev```
 - http://localhost:5000 to see the site
