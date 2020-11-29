@@ -18,7 +18,7 @@ router.post("/ed",async (req,res)=>{
 router.get("/ed",(req,res)=>{
     ED.find({},(err,data)=> {
         if(err) res.send(err) 
-        else res.render('Edservice',{user: req.session.user,data: data})
+        else res.render('Edservice',{user: req.session.user,title: "EdServices",data: data})
     })
 })
 

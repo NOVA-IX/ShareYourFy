@@ -12,8 +12,7 @@ const EdSchema = new mongoose.Schema({
         type: String,
         required: true,
         minlength: 5,
-        maxlength: 255,
-        unique: true
+        maxlength: 255
     },
     contact: {
         type: String,
@@ -24,6 +23,10 @@ const EdSchema = new mongoose.Schema({
     instruments: {
         type: Array,
         required: true
+    },
+    uploadedAt:{
+        type: Date,
+        default: Date.now()
     }
 })
 
