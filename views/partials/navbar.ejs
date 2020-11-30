@@ -1,6 +1,6 @@
 <header class="text-gray-500 navbar bg-gray-900 body-font" style="padding-bottom: 100px;">
     <div class="container navbar-fixed mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center"
-      style="position: fixed; background-color: #1A202C;">
+      style="position: fixed; background-color: #1A202C; z-index: 200;">
       <a class="flex title-font font-medium items-center text-white mb-4 md:mb-0">
         <img src="/img/logo.jpeg" alt="Logo" height=50 width=50>
         <span class="ml-3 text-xl">shareyourFY</span>
@@ -17,7 +17,18 @@
       </nav>
       <% %>
       <% if (user) { %>
-        <h1>Welcome<br>   <%= user.username %> </h1>
+        <a href="/logout">
+          <button id="myBtn"
+            class="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0">Logout
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+              <path d="M5 12h14M12 5l7 7-7 7"></path>
+            </svg>
+          </button>
+        </a>
+        <a class="ml-3 text-gray-600" style="cursor: pointer;" href="/profile">
+                <i class="fa fa-2x fa-user-circle" aria-hidden="true"></i></a>
+        
       <% } else { %>
         <a href="/login">
           <button id="myBtn"
