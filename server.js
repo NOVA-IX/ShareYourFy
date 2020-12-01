@@ -29,6 +29,7 @@ mongoose.connect(process.env.DB_URI, { useNewUrlParser: true, useUnifiedTopology
 
 //user session
 app.use(session({
+    name: 'user_sid',
     secret: 'somerandonstuffs',
     resave: false,
     saveUninitialized: false,
