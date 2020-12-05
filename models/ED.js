@@ -24,6 +24,10 @@ const EdSchema = new mongoose.Schema({
         type: Array,
         required: true
     },
+    imageUrl: {
+        type: String,
+        required: true
+    },
     uploadedAt:{
         type: Date,
         default: Date.now()

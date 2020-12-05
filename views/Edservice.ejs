@@ -1,30 +1,22 @@
 <section class="text-gray-500 bg-gray-900 body-font">
 	<h1 class="text-3xl text-indigo-500 body-font px-5">Engineering Drawing Materials</h1>
 	<div class="container px-5 py-10 mx-auto">
-	  <div class="flex flex-wrap -m-4">
+		<div class="flex flex-wrap -m-4">
 
-		<% data.forEach(item => { %>
-		<!-- <div class="blogs bg-white mr-5">
-			<img src="https://images.unsplash.com/photo-1489396160836-2c99c977e970?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
-				class="">
-			<div class="p-5">
-				<h1 class="text-2xl font-bold text-green-800 py-2"><%= item.title%></h1>
-				<p class="bg-white text-sm text-black"><%= item.instruments.join(", ")%></p>
-				<a href="" class="py-2 px-3 mt-4 px-6 text-white bg-green-500 inline-block rounded"><%= item.phone%></a>
+			<% data.forEach(item => { %>
+			<div class="lg:w-1/4 md:w-1/2 p-4 w-full" style="z-index: 1;">
+				<a class="block relative h-48 rounded overflow-hidden">
+					<img alt="ecommerce" class="object-cover object-center w-full h-full block" style="object-fit: contain;"
+						src="<%= item.imageUrl%>" accept="image/*">
+				</a>
+				<div class="mt-4">
+					<h2 class="text-white title-font text-lg font-medium"><%= item.instruments.join(", ")%></h2>
+					<h3 class="text-gray-500 text-2xs tracking-widest title-font mb-1"><%= item.title%></h3>
+					<p class="mt-1"><%= item.contact %></p>
+				</div>
 			</div>
-		</div> -->
-		<div class="lg:w-1/4 md:w-1/2 p-4 w-full" style="z-index: 1;">
-			<a class="block relative h-48 rounded overflow-hidden">
-			  <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="https://dummyimage.com/420x260">
-			</a>
-			<div class="mt-4">
-				<h2 class="text-white title-font text-lg font-medium"><%= item.instruments.join(", ")%></h2>
-			  <h3 class="text-gray-500 text-2xs tracking-widest title-font mb-1"><%= item.title%></h3>
-			  <p class="mt-1"> Contact: 8652747379</p>
-			</div>
-		  </div>
-		<% }) %>
+			<% }) %>
 
-	  </div>
+		</div>
 	</div>
-</div>
+	</div>

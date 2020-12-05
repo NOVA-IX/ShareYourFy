@@ -7,6 +7,7 @@ const session = require('express-session')
 const cookieParser = require('cookie-parser')
 var expressLayouts = require('express-ejs-layouts')
 const MongoStore = require('connect-mongodb-session')(session)
+global._basedir = __dirname
 
 const app = express()
 
