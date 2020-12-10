@@ -2,7 +2,8 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const auth = require('./routes/auth')
-const services = require('./routes/Services/Edroute')
+const services = require('./routes/Services')
+const main = require('./routes/main')
 const session = require('express-session')
 const cookieParser = require('cookie-parser')
 var expressLayouts = require('express-ejs-layouts')
@@ -45,53 +46,10 @@ app.use((req, res, next) => {
     next();
 });
 
-var sessionChecker = (req, res, next) => {
-    if (req.session.user && req.cookies.user_sid) next()
-    else res.redirect('/login');
-};
-
 //route
 app.use('/auth',auth) 
 app.use('/services',services)
-
-app.get("/",(req,res) => {
-    res.render('index',{user: req.session.user,title: 'Home'})
-})
-
-app.get('/index',(req,res)=>{
-    res.redirect('/')
-})
-
-app.get("/about", (req, res) => {
-    res.render('about',{user: req.session.user,title: 'About'})
-})
-
-app.get("/services", sessionChecker,(req, res) => {
-    res.render('services',{user: req.session.user,title: 'Services'})
-})
-
-app.get("/contact", (req, res) => {
-    res.render('contact',{user: req.session.user,title: 'Contact'})
-})
-
-app.get("/login",(req,res)=>{
-    if(req.session.user)
-        res.redirect('/')
-    else
-        res.render('login', { layout: 'layouts/authLayout' });
-})
-
-app.get("/logout",(req,res)=>{
-    if (req.session) {
-    req.session.destroy(err => {
-      if (err)
-        res.status(400).send('Unable to log out')
-      else 
-        res.redirect('/')
-    });
-  } else
-    res.end()
-})
+app.use('/',main)
 
 //server
 const port = process.env.PORT || 5001
