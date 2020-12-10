@@ -24,8 +24,8 @@ router.post("/rent",upload.array('upload',5),async (req,res)=>{
             if(urls.length == req.files.length){
                 const newTextbook = new Textbook({
                     title: title, 
-                    email: req.session.user.email,
                     description: description,
+                    email: req.session.user.email,
                     contact: contact,
                     imageUrl: urls,
                     price: price
@@ -44,7 +44,8 @@ router.post("/rent",upload.array('upload',5),async (req,res)=>{
 
 router.get("/rent",(req,res)=>{
     Textbook.find({},(err,data)=> {
-        res.json(data)
+        if(err) res.send(err) 
+        else res.render('Trservice',{user: req.session.user,title: "TRServices",data: data})
     })
 })
 
