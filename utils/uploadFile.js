@@ -9,14 +9,14 @@ const storage = new Storage({
 
 const bucket = storage.bucket("gs://shareyourfy.appspot.com");
 
-const uploadImageToStorage = (file) => {
+const uploadImageToStorage = (file,folder) => {
   return new Promise((resolve, reject) => {
     if (!file) {
       reject('No image file');
     }
     let newFileName = `${file.originalname.split(/\s/).join('')}_${Date.now()}${path.extname(file.originalname)}`;
 
-    let fileUpload = bucket.file("EDimages/" + newFileName);
+    let fileUpload = bucket.file(`${folder}/` + newFileName);
 
     const blobStream = fileUpload.createWriteStream({
       metadata: {
@@ -30,7 +30,7 @@ const uploadImageToStorage = (file) => {
     });
 
     blobStream.on('finish', () => {
-      const url = `https://firebasestorage.googleapis.com/v0/b/shareyourfy.appspot.com/o/EDimages%2F${newFileName}?alt=media`;
+      const url = `https://firebasestorage.googleapis.com/v0/b/shareyourfy.appspot.com/o/${folder}%2F${newFileName}?alt=media`;
       resolve(url);
     });
 

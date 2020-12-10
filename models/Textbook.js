@@ -24,6 +24,9 @@ const TextbookSchema = new mongoose.Schema({
         type: Array,
         required: true
     },
+    price: {
+        type: String
+    },
     uploadedAt:{
         type: Date,
         default: Date.now()

@@ -125,18 +125,18 @@
     <div class="modal-content" style="background-color: #1A202C;">
         <span class="close" id="cross3">&times;</span>
         <div class="form-container sign-up-container">
-            <form action="#" id="conttrform">
+            <form action="/services/rent" id="conttrform" method="POST" enctype="multipart/form-data">
                 <span style="padding-bottom: 10px; color: floralwhite; padding-top: 10px;">Add Textbook Details
                     here!</span>
                 <input type="text" style="border-width: 3px; width: 300px; height: 35px; border-radius: 15px;"
                     name="title" placeholder="Title" required>
                 <span style="padding-bottom: 10px;"></span>
                 <input type="text" style="border-width: 3px; width: 300px; height: 35px; border-radius: 15px;"
-                    name="desc" placeholder="Description" required>
+                    name="description placeholder="Description" required>
                 <span style="padding-bottom: 10px;"></span>
                 <input type="file" id="files"
                     style="border-width: 3px; color: #667EEA; width: 300px; height: 35px; border-radius: 8px;"
-                    name="file">
+                    name="upload" multiple>
                     <label for="files" style="color: aliceblue;">*Upload&nbsp;image&nbsp;of&nbsp;textbook</label>
                 <span style="padding-bottom: 10px;"></span>
                 <input type="tel" pattern="[0-9]{10}"
@@ -144,9 +144,9 @@
                     id="Contact" placeholder="Contact Number eg. 9876543210" required>
                 <span style="padding-bottom: 10px;"></span>
                 <input type="number" style="border-width: 3px; width: 300px; height: 35px; border-radius: 15px;"
-                    name="desc" placeholder="Base Price if any">
+                    name="price" placeholder="Base Price if any">
                 <span style="padding-bottom: 10px;"></span>
-                <button type="submit" name="sub" id="conttrsub"
+                <button type="submit" id="conttrsub"
                     style="color: floralwhite; background-color: #667EEA; border-radius: 5px; width: 80px; height: 30px;">Submit</button>
             </form>
         </div>
@@ -164,7 +164,7 @@
                     name="title" id="Handover" placeholder="Handover Instruction" required>
                 <span style="padding-bottom: 10px;"></span>
                 <input type="file" style="border-width: 3px; width: 300px; height: 35px; border-radius: 15px;" name="upload"
-                    id="image" required>
+                    id="image" required multiple>
                 <label for="image" style="color: aliceblue;">*Upload&nbsp;image&nbsp;containing&nbsp;all&nbsp;instruments</label>
                 <input type="tel" pattern="[0-9]{10}"
                     style="border-width: 3px; width: 300px; height: 35px; border-radius: 15px;" name="contact"

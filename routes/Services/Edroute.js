@@ -17,7 +17,7 @@ const upload = multer({ storage: multer.memoryStorage(), fileFilter: fileFilter 
 router.post("/ed",upload.single('upload'),async (req,res)=>{
     const {title,contact,instruments} = req.body
 
-    FirebaseUpload(req.file).then(async (url) =>{
+    FirebaseUpload(req.file,'EDimages').then(async (url) =>{
         const newEd = new ED({
             title: title, 
             email: req.session.user.email,
