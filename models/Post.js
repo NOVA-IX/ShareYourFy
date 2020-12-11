@@ -5,18 +5,11 @@ const postSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  description: {
-    type: String,
-  },
   username: {
     type: String,
     required: true,
   },
   email: {
-    type: String,
-    required: true,
-  },
-  markdown: {
     type: String,
     required: true,
   },
