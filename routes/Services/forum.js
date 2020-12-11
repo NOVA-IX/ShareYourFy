@@ -40,13 +40,13 @@ router.get('/:id',async (req,res)=>{
 router.post('/',async (req,res)=>{
     const post = new Post({
         title: req.body.title,
-        username: req.body.username,
-        email: req.body.email
+        username: req.session.user.username,
+        email: req.session.user.email
     })
 
     try{
         const thePost = await post.save()
-        res.redirect(`/services/forum/${thePost.id}`)
+        res.redirect(`/services/forum`)
         res.end()
     }catch(err){
         res.json({
