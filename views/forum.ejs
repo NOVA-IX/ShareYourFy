@@ -94,7 +94,7 @@
                                 </a>
                             </h1>
                             <% if (item.comments[0]) { %>
-                                <p id="<%= 'ans'+item.id %>" class="leading-relaxed mb-3 block"><%= item.comments[0].comment%> <span
+                                <p id="<%= 'ans'+item.id %>" class="leading-relaxed mb-3 inline-block"><%= item.comments[0].comment%> <span
                                         class="text-gray-500 inline-flex items-right leading-none text-sm" style="font-style: italic;">-
                                         <%= item.comments[0].username%></span></p>
                                 <a href="/services/forum/<%= item.id%>" id="<%= 'anslink'+item.id %>"

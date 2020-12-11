@@ -5,7 +5,7 @@ const router = express.Router()
 router.get('/',(req,res)=>{
     Post.find({},(err,data)=> {
         console.log(data)
-        res.render('forum',{user: req.session.user,title: "Forum",data: data,comment: data.comment})
+        res.render('forum',{user: req.session.user,title: "Forum",data: data})
     })
 })
 
@@ -15,9 +15,8 @@ router.post('/:id/comment',(req,res)=>{
     try{
         Post.findById(id, (err,article) => {
             if (err)  res.json({ err: err});
-            var comment = {username: req.body.username, comment: req.body.comment};
+            var comment = {username: req.session.user.username, comment: req.body.comment};
             article.comments.unshift(comment);
-            console.log(article)
             article.save(() => {
                 res.redirect(`/services/forum/${req.params.id}`);
             });
@@ -30,11 +29,15 @@ router.post('/:id/comment',(req,res)=>{
 })
 
 router.get('/:id',async (req,res)=>{
-    const post = await Post.findById(req.params.id)
-    if (post == null) res.redirect('/')
-    res.json({
-        post: post
-    })
+    try{
+        const post = await Post.findById(req.params.id)
+        if (post == null) res.redirect('/')
+        res.render("ques", { user: req.session.user, title: "Detail", data: post });
+    }catch(err){
+        res.json({
+            err: err
+        })
+    }
 })
 
 router.post('/',async (req,res)=>{
