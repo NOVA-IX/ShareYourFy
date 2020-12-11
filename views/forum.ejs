@@ -1,0 +1,48 @@
+<div>
+    <h1 class="text-3xl container mx-auto font-medium text-indigo-500 title-font px-5" style="padding-top: 100px;">Doubt Solving Forum</h1>
+    <section class="text-gray-500 bg-gray-900 body-font">
+        <div class="container px-5 mx-auto" style="padding-top: 30px;">
+            <div class="flex flex-wrap -m-4">
+                <% for(let i = 0; i < 4; i++) { %>
+                <div class="p-2" style="width: 100%;">
+                    <div id="<%= 'btn'+i %>" class="h-full bg-gray-800 px-8 pt-4 pb-15 rounded-lg overflow-hidden text-left">
+                        <h1 id="<%= 'ques'+i %>" class="title-font sm:text-2xl text-xl font-medium text-white mb-3">Raclette Blueberry
+                            Nextious Level <p class="text-gray-500 inline-flex items-right leading-none text-sm" style="font-style: italic;">- Hollen Claufield</p>
+
+                            <a href="#" class="text-white-900 inline-flex items-right leading-none text-sm" style="float: right; align-items: center; padding-top: 0.8%;">
+                                <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none"
+                                    stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                    <path
+                                        d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z">
+                                    </path>
+                                </svg>6
+                            </a>
+                        </h1>
+                        <p id="<%= 'ans'+i %>" class="leading-relaxed mb-3" style="display: none;">Photo booth fam kinfolk cold-pressed sriracha leggings jianbing
+                            microdosing tousled waistcoat. <span class="text-gray-500 inline-flex items-right leading-none text-sm" style="font-style: italic;">- Hollen Claufield</span></p>
+                        <a href="https://google.com/" id="<%= 'anslink'+i %>" class="text-blue-400 inline-flex items-right text-sm" style="display: none; float: right; align-items: center; padding-top: 0.4%;">More answers? Click here</a>
+                    </div>
+                </div>
+                <% } %>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script>
+    for(let i = 0; i < 4; i++) {
+        let btn = 'btn'+i
+        let ans = 'ans'+i
+        let link = 'anslink'+i
+        document.getElementById(btn).onclick = () => {
+            if(document.getElementById(ans).style.display == "inline-block") {
+                document.getElementById(ans).style.display = "none"
+                document.getElementById(link).style.display = "none"
+            }
+            else {
+                document.getElementById(ans).style.display = "inline-block"
+                document.getElementById(link).style.display = "inline-block"
+            }
+        }
+    }
+</script>
