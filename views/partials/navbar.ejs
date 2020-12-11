@@ -1,23 +1,81 @@
-<header class="text-gray-500 navbar bg-gray-900 body-font" style="width:100%; margin-right: 0; position: fixed; z-index: 5000;">
-    <div class="container navbar-fixed mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center"
-      style="position: relative; background-color: #1A202C; z-index: 200;">
-      <a class="flex title-font font-medium items-center text-white mb-4 md:mb-0">
-        <img src="/img/logo.jpeg" alt="Logo" height=50 width=50>
-        <span class="ml-3 text-xl">shareyourFY</span>
-      </a>
-      <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
-        <a class="mr-5 hover:text-white" 
-          style="<%= title == 'Home' ? 'color: #667EEA; cursor: pointer;' : 'cursor: pointer;' %>" href="/index">Home</a>
-        <a class="mr-5 hover:text-white"
-          style="<%= title == 'About' ? 'color: #667EEA; cursor: pointer;' : 'cursor: pointer;' %>" href="/about">About</a>
-        <a class="mr-5 hover:text-white"
-          style="<%= title == 'Services' ? 'color: #667EEA; cursor: pointer;' : 'cursor: pointer;' %>" href="/services">Services</a>
-        <a class="mr-5 hover:text-white"
-          style="<%= title == 'Contact' ? 'color: #667EEA; cursor: pointer;' : 'cursor: pointer;' %>" href="/contact">Contact</a>
-      </nav>
-      <% %>
+<style>
+  @media (max-width: 768px) {
+    .spacetop {
+      padding-top: 10px;
+    }
+  }
+
+  /* Dropdown Button */
+  .dropbtn {
+    padding: 16px;
+    border: none;
+    cursor: pointer;
+  }
+
+  /* The container <div> - needed to position the dropdown content */
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  /* Dropdown Content (Hidden by Default) */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #667EEA;
+    min-width: 120px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius: 20px;
+    left: 50% !important;
+    right: auto !important;
+    text-align: center !important;
+    transform: translate(-50%, 0) !important;
+  }
+
+  /* Links inside the dropdown */
+  .dropdown-content a {
+    color: aliceblue;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+
+  /* Change color of dropdown links on hover */
+  .dropdown-content a:hover {
+    background-color: #1A202C
+  }
+
+  /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+  .show {
+    display: block;
+    align-self: center;
+  }
+</style>
+<header class="text-gray-500 navbar bg-gray-900 body-font"
+  style="width:100%; margin-right: 0; position: fixed; z-index: 5000;">
+  <div class="container navbar-fixed mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center"
+    style="position: relative; background-color: #1A202C; z-index: 200;">
+    <a class="flex title-font font-medium items-center text-white mb-4 md:mb-0">
+      <img src="/img/logo.jpeg" alt="Logo" height=50 width=50>
+      <span class="ml-3 text-xl">shareyourFY</span>
+    </a>
+    <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
+      <a class="mr-5 hover:text-white"
+        style="<%= title == 'Home' ? 'color: #667EEA; cursor: pointer;' : 'cursor: pointer;' %>" href="/index">Home</a>
+      <a class="mr-5 hover:text-white"
+        style="<%= title == 'About' ? 'color: #667EEA; cursor: pointer;' : 'cursor: pointer;' %>"
+        href="/about">About</a>
+      <a class="mr-5 hover:text-white"
+        style="<%= title == 'Services' ? 'color: #667EEA; cursor: pointer;' : 'cursor: pointer;' %>"
+        href="/services">Services</a>
+      <a class="mr-5 hover:text-white"
+        style="<%= title == 'Contact' ? 'color: #667EEA; cursor: pointer;' : 'cursor: pointer;' %>"
+        href="/contact">Contact</a>
+    </nav>
+    <% %>
       <% if (user) { %>
-        <a href="/logout">
+    <!-- <a href="/logout">
           <button id="myBtn"
             class="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0">Logout
             <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -25,20 +83,58 @@
               <path d="M5 12h14M12 5l7 7-7 7"></path>
             </svg>
           </button>
+        </a> -->
+    <div class="dropdown">
+      <i onclick="myFunction()" class="dropbtn fa fa-2x fa-user-circle" aria-hidden="true"></i>
+      <div id="myDropdown" class="dropdown-content" style="width: min-content;">
+        <a href="#">
+          <p class="inline-flex items-center border-0 py-1 px-3 rounded text-base mt-4 md:mt-0">Username
+          </p>
         </a>
-        <a class="ml-3 text-gray-600" style="cursor: pointer;" href="/profile">
-                <i class="fa fa-2x fa-user-circle" aria-hidden="true"></i></a>
-        
-      <% } else { %>
-        <a href="/login">
-          <button id="myBtn"
-            class="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0">Login
+        <a href="/logout">
+          <button id="myBtn" class="inline-flex items-center border-0 py-1 px-3 rounded text-base mt-4 md:mt-0">Logout
             <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
               class="w-4 h-4 ml-1" viewBox="0 0 24 24">
               <path d="M5 12h14M12 5l7 7-7 7"></path>
             </svg>
           </button>
         </a>
-      <% } %>
+      </div>
     </div>
-  </header>
+    <!-- <a class="spacetop ml-3 text-gray-600" style="cursor: pointer;" href="/profile">
+                <i class="fa fa-2x fa-user-circle" aria-hidden="true"></i></a> -->
+    <script>
+      /* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+      function myFunction() {
+        document.getElementById("myDropdown").classList.toggle("show");
+      }
+
+      // Close the dropdown menu if the user clicks outside of it
+      window.onclick = function (event) {
+        if (!event.target.matches('.dropbtn')) {
+          var dropdowns = document.getElementsByClassName("dropdown-content");
+          var i;
+          for (i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('show')) {
+              openDropdown.classList.remove('show');
+            }
+          }
+        }
+      }
+    </script>
+
+    <% } else { %>
+    <a href="/login">
+      <button id="myBtn"
+        class="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0">Login
+        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+          <path d="M5 12h14M12 5l7 7-7 7"></path>
+        </svg>
+      </button>
+    </a>
+    <% } %>
+  </div>
+</header>
