@@ -5,7 +5,7 @@ const router = express.Router()
 router.get('/',(req,res)=>{
     Post.find({},(err,data)=> {
         console.log(data)
-        res.render('forum',{user: req.session.user,title: "Forum",data: data})
+        res.render('forum',{user: req.session.user,title: "Forum",data: data,comment: data.comment})
     })
 })
 
@@ -42,15 +42,13 @@ router.get('/new',async (req,res)=>{
 router.post('/',async (req,res)=>{
     const post = new Post({
         title: req.body.title,
-        username: req.body.username,
-        description: req.body.description,
-        markdown: req.body.body,
-        email: req.body.email
+        username: req.session.user.username,
+        email: req.session.user.email
     })
 
     try{
         const thePost = await post.save()
-        res.redirect(`/services/forum/${thePost.id}`)
+        res.redirect(`/services/forum`)
         res.end()
     }catch(err){
         res.json({
