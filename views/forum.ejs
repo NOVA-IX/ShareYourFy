@@ -67,7 +67,9 @@
     <div>
         <h1 class="text-3xl container mx-auto font-medium text-indigo-500 title-font px-5" style="padding-top: 100px;">
             Doubt
-            Solving Forum</h1>
+            Solving Forum
+    
+        </h1>
         <section class="text-gray-500 bg-gray-900 body-font">
             <div class="container px-5 mx-auto" style="padding-top: 30px;">
                 <div class="flex flex-wrap -m-4">
@@ -88,15 +90,24 @@
                                         <path
                                             d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z">
                                         </path>
-                                    </svg>6
+                                    </svg><% if (item.comments[0]) { %> <%= item.comments.length%> <% } else { %> 0 <% }%>
                                 </a>
                             </h1>
-                            
-                            <a href="/services/forum/<%= item.id%>" id="<%= 'anslink'+item.id %>"
-                                class="text-blue-400 inline-flex items-right text-sm"
-                                style="display: none; float: right; align-items: center; padding-top: 0.4%;">More
-                                answers?
-                                Click here</a>
+                            <% if (item.comments[0]) { %>
+                                <p id="<%= 'ans'+item.id %>" class="leading-relaxed mb-3 block"><%= item.comments[0].comment%> <span
+                                        class="text-gray-500 inline-flex items-right leading-none text-sm" style="font-style: italic;">-
+                                        <%= item.comments[0].username%></span></p>
+                                <a href="/services/forum/<%= item.id%>" id="<%= 'anslink'+item.id %>"
+                                    class="text-blue-400 inline-flex items-right text-sm block"
+                                    style="float: right; align-items: center; padding-top: 0.4%;">More answers? Click here</a>
+                            <% } else { %>
+                                <p id="<%= 'ans'+item.id %>" class="leading-relaxed mb-3 inline-block"><span
+                                        class="text-gray-500 inline-flex items-right leading-none text-sm" style="font-style: italic;">No one Answered
+                                        Yet</span></p>
+                                <a href="/services/forum/<%= item.id%>" id="<%= 'anslink'+item.id %>"
+                                    class="text-blue-400 inline-flex items-right text-sm block"
+                                    style="float: right; align-items: center; padding-top: 0.4%;">Got Answer? Click Here</a>
+                            <% } %>
                         </div>
                     </div>
 
@@ -168,21 +179,3 @@
     </div>
     </section>
 </div>
-
-<!-- <% data.forEach(item => { %>
-    <script>
-            let btn = 'btn'+ item.id
-            let ans = 'ans'+ item.id
-            let link = 'anslink'+ item.id
-            document.getElementById(btn).onclick = () => {
-                if(document.getElementById(ans).style.display == "inline-block") {
-                    document.getElementById(ans).style.display = "none"
-                    document.getElementById(link).style.display = "none"
-                }
-                else {
-                    document.getElementById(ans).style.display = "inline-block"
-                    document.getElementById(link).style.display = "inline-block"
-                }
-            }
-    </script>
-<% }) %> -->
