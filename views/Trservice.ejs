@@ -1,88 +1,87 @@
 <style>
-    @media (max-width: 650px) {
-        .min-sec {
-            padding-top: 220px;
-            text-align: center;
-        }
+  @media (max-width: 650px) {
+    .min-sec {
+      padding-top: 220px;
+      text-align: center;
     }
+  }
 
-    @media (min-width: 650px) {
-        .min-sec {
-            padding-top: 100px;
-        }
+  @media (min-width: 650px) {
+    .min-sec {
+      padding-top: 100px;
     }
+  }
 </style>
 <style>
-    * {box-sizing: border-box;}
-    img {vertical-align: middle;}
-    
-    /* Slideshow container */
-    .slideshow-container {
-      max-width: 1000px;
-      position: relative;
-      margin: auto;
+  * {
+    box-sizing: border-box;
+  }
+
+  img {
+    vertical-align: middle;
+  }
+
+  /* Slideshow container */
+  .slideshow-container {
+    max-width: 1000px;
+    position: relative;
+    margin: auto;
+  }
+
+  /* Fading animation */
+  .fade {
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 1.5s;
+    animation-name: fade;
+    animation-duration: 1.5s;
+  }
+
+  @-webkit-keyframes fade {
+    from {
+      opacity: .4
     }
-    
-    /* Fading animation */
-    .fade {
-      -webkit-animation-name: fade;
-      -webkit-animation-duration: 1.5s;
-      animation-name: fade;
-      animation-duration: 1.5s;
+
+    to {
+      opacity: 1
     }
-    
-    @-webkit-keyframes fade {
-      from {opacity: .4} 
-      to {opacity: 1}
+  }
+
+  @keyframes fade {
+    from {
+      opacity: .4
     }
-    
-    @keyframes fade {
-      from {opacity: .4} 
-      to {opacity: 1}
+
+    to {
+      opacity: 1
     }
-    </style>
+  }
+</style>
 <section class="container mx-auto min-sec text-gray-500 bg-gray-900 body-font">
-    <h1 class="text-3xl font-medium text-indigo-500 title-font px-5">Textbook Renting/Buying</h1>
-    <div class="container px-5 py-10 mx-auto">
-        <div class="flex flex-wrap -m-4">
+  <h1 class="text-3xl font-medium text-indigo-500 title-font px-5">Textbook Renting/Buying</h1>
+  <div class="container px-5 py-10 mx-auto">
+    <div class="flex flex-wrap -m-4">
 
-            <% data.forEach(item => { %>
-            <div class="lg:w-1/4 md:w-1/2 p-4 w-full" style="z-index: 1;">
+      <% data.forEach(item => { %>
+      <div class="lg:w-1/4 md:w-1/2 p-4 w-full" style="z-index: 1;">
 
-                <div class="slideshow-container">
-                    <% item.imageUrl.forEach(ele => { %>
-                    <div class="mySlides fade">
-                      <img src="<%= ele %>" style="width:100%">
-                    </div>
-                    <% }) %>
-                </div>
-
-                <div class="mt-4 text-center">
-                    <h2 class="text-white title-font text-lg font-medium"><%= item.title%></h2>
-                    <h3 class="text-gray-500 text-2xs tracking-widest title-font mb-1"><%= item.description%></h3>
-                    <p class="mt-1">Contact: <%= item.contact%></p>
-                    <p class="mt-1">Base price: <%= item.price%></p>
-                </div>
-            </div>
-            <% }) %>
-            
-
+        <div class="slideshow-container">
+          <div class="mySlides fade">
+            <img src="<%= item.imageUrl[0] %>" style="width:100%; cursor: pointer;" id="image">
+          </div>
         </div>
+
+        <div class="mt-4 text-center">
+          <h2 class="text-white title-font text-lg font-medium"><%= item.title%></h2>
+          <h3 class="text-gray-500 text-2xs tracking-widest title-font mb-1"><%= item.description%></h3>
+          <p class="mt-1">Contact: <%= item.contact%></p>
+          <p class="mt-1">Base price: <%= item.price%></p>
+        </div>
+      </div>
+      <% }) %>
     </div>
-    </div>
-    <script>
-        var slideIndex = 0;
-        showSlides();
-        
-        function showSlides() {
-          var i;
-          var slides = document.getElementsByClassName("mySlides");
-          for (i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";  
-          }
-          slideIndex++;
-          if (slideIndex > slides.length) {slideIndex = 1}
-          slides[slideIndex-1].style.display = "block";
-          setTimeout(showSlides, 2000); // Change image every 2 seconds
-        }
-        </script>
+  </div>
+  </div>
+
+  <script>
+    val image = document.find
+  </script>

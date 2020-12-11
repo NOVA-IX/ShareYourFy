@@ -18,25 +18,22 @@
                                 </svg>6
                             </a>
                         </h1>
-                        <p id="<%= 'ans'+item.id %>" class="leading-relaxed mb-3" style="display: none;"><%= item.comments[0].comment%> <span class="text-gray-500 inline-flex items-right leading-none text-sm" style="font-style: italic;">- <%= item.comments[0].username%></span></p>
-                        <a href="/services/forum/<%= item.id%>" id="<%= 'anslink'+item.id %>" class="text-blue-400 inline-flex items-right text-sm" style="display: none; float: right; align-items: center; padding-top: 0.4%;">More answers? Click here</a>
+                        <% if (item.comments[0]) { %>
+                            <p id="<%= 'ans'+item.id %>" class="leading-relaxed mb-3 block"><%= item.comments[0].comment%> <span
+                                class="text-gray-500 inline-flex items-right leading-none text-sm" style="font-style: italic;">-
+                                <%= item.comments[0].username%></span></p>
+                            <a href="/services/forum/<%= item.id%>" id="<%= 'anslink'+item.id %>"
+                                class="text-blue-400 inline-flex items-right text-sm block"
+                                style="float: right; align-items: center; padding-top: 0.4%;">More answers? Click here</a>
+                        <% } else { %>
+                            <p id="<%= 'ans'+item.id %>" class="leading-relaxed mb-3 inline-block"><span
+                                    class="text-gray-500 inline-flex items-right leading-none text-sm" style="font-style: italic;">No one Answered Yet</span></p>
+                            <a href="/services/forum/<%= item.id%>" id="<%= 'anslink'+item.id %>"
+                                class="text-blue-400 inline-flex items-right text-sm block"
+                                style="float: right; align-items: center; padding-top: 0.4%;">Got Answer? Click Here</a>
+                        <% } %>
                     </div>
                 </div>
-                <script>
-                    let btn = <%= 'btn' + item.id%>
-                    let ans = <%= 'ans' + item.id%>
-                    let link = <%= 'anslink' +  item.id %>
-                    document.getElementById(btn).onclick = () => {
-                        if (document.getElementById(ans).style.display == "inline-block") {
-                            document.getElementById(ans).style.display = "none"
-                            document.getElementById(link).style.display = "none"
-                        }
-                        else {
-                            document.getElementById(ans).style.display = "inline-block"
-                            document.getElementById(link).style.display = "inline-block"
-                        }
-                    }
-                </script>
                 <% }) %>
             </div>
         </div>
