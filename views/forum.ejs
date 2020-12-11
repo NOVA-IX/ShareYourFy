@@ -79,7 +79,7 @@
                             <h1 id="<%= 'ques'+item.id %>"
                                 class="title-font sm:text-2xl text-xl font-medium text-white mb-3"> <%= item.title%>
                                 <p class="text-gray-500 inline-flex items-right leading-none text-sm"
-                                    style="font-style: italic;">- <%= item.email%></p>
+                                    style="font-style: italic;">- <%= item.username%></p>
 
                                 <a href="#" class="text-white-900 inline-flex items-right leading-none text-sm"
                                     style="float: right; align-items: center; padding-top: 0.8%;">
@@ -130,13 +130,12 @@
                         <span class="close" id="cross" style="float: right;">&times;</span>
                         <div class="form-container">
                             <form action="/services/forum" id="quesform" method="POST">
-                                <span class="pad" style="color: floralwhite;">Ask Question here</span><br>
-                                <input type="text"
-                                    style="border-width: 3px; width: 300px; height: 35px; border-radius: 15px; color: black;"
-                                    name="title" placeholder="What is the question?" required><br>
-                                <span style="padding-top: 100px;"></span>
-                                <button type="submit" id="quessub"
-                                    style="color: floralwhite; background-color: #667EEA; border-radius: 5px; width: 80px; height: 30px; float: right;">Ask!</button>
+                                    <span style="padding-bottom: 10px; color: floralwhite; padding-top: 10px;">Ask Question here</span>
+                                    <input type="text" style="border-width: 3px; width: 300px; height: 35px; border-radius: 15px;  color: black;" name="title"
+                                        placeholder="What is the question?" required>
+                                    <span style="padding-bottom: 10px;"></span>
+                                    <button type="submit" id="conttrsub" class="my-3"
+                                        style="color: floralwhite; background-color: #667EEA; border-radius: 5px; width: 80px; height: 30px;">Ask</button>
                             </form>
                         </div>
                     </div>

@@ -11,11 +11,13 @@ router.get('/',(req,res)=>{
 
 router.post('/:id/comment',(req,res)=>{
     const id = req.params.id
+    console.log(req.body)
     try{
         Post.findById(id, (err,article) => {
             if (err)  res.json({ err: err});
             var comment = {username: req.body.username, comment: req.body.comment};
             article.comments.unshift(comment);
+            console.log(article)
             article.save(() => {
                 res.redirect(`/services/forum/${req.params.id}`);
             });
@@ -33,10 +35,6 @@ router.get('/:id',async (req,res)=>{
     res.json({
         post: post
     })
-})
-
-router.get('/new',async (req,res)=>{
-    //render the editor
 })
 
 router.post('/',async (req,res)=>{
