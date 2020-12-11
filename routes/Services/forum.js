@@ -4,8 +4,8 @@ const router = express.Router()
 
 router.get('/',(req,res)=>{
     Post.find({},(err,data)=> {
-        if(err) res.send(err) 
-        else res.json(data)
+        console.log(data)
+        res.render('forum',{user: req.session.user,title: "Forum",data: data})
     })
 })
 
@@ -42,6 +42,7 @@ router.get('/new',async (req,res)=>{
 router.post('/',async (req,res)=>{
     const post = new Post({
         title: req.body.title,
+        username: req.body.username,
         description: req.body.description,
         markdown: req.body.body,
         email: req.body.email

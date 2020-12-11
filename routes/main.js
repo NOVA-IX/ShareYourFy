@@ -45,4 +45,8 @@ router.get("/logout",(req,res)=>{
     res.end()
 })
 
+router.get("*", function (req, res) {
+  res.status(404).render("404", { user: req.session.user, title: "Contact" });
+});
+
 module.exports = router

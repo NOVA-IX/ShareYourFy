@@ -3,27 +3,31 @@ const mongoose = require('mongoose')
 const postSchema = new mongoose.Schema({
   title: {
     type: String,
-    required: true
+    required: true,
   },
   description: {
-    type: String
+    type: String,
+  },
+  username: {
+    type: String,
+    required: true,
   },
   email: {
-      type: String,
-      required: true
+    type: String,
+    required: true,
   },
   markdown: {
     type: String,
-    required: true
+    required: true,
   },
-  comments:{
-      type: Array,
-      default: []
+  comments: {
+    type: Array,
+    default: [],
   },
   createdAt: {
     type: Date,
-    default: Date.now
-  }
-})
+    default: Date.now,
+  },
+});
 
 module.exports = mongoose.model('posts',postSchema)
