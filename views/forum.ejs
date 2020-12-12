@@ -62,7 +62,14 @@
         text-decoration: none;
         cursor: pointer;
     }
+    [class^="hvr-"] {
+	 margin: 0.4em;
+	 padding: 1em;
+	 cursor: pointer;
+	 -webkit-font-smoothing: antialiased;
+}
 </style>
+<link rel="stylesheet" href="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/hover.css">
 <div>
     <div>
         <h1 class="text-3xl container mx-auto font-medium text-indigo-500 title-font px-5" style="padding-top: 100px;">
@@ -131,12 +138,12 @@
                     <% }) %>
                 </div>
 
-                <div id="quesbtn">
-                    <a href='#' id="addques" style="font-size: 2rem; float: right; padding: 1rem;">+<span id="questxt"
+                <div id="quesbtn" class="hvr-grow-shadow">
+                    <a href='#' id="addques" style="font-size: 2rem; float: right !important; padding: 1rem;">+<span id="questxt"
                             style="display: none;">Add a Question</span></a>
                 </div>
 
-                <div id="quesmodal" class="modal" style="display: none;">
+                <div id="quesmodal" class="modal hvr-bounce-in" style="display: none;">
                     <div class="modal-content" style="background-color: #1A202C;">
                         <span class="close" id="cross" style="float: right;">&times;</span>
                         <div class="form-container">
@@ -145,7 +152,7 @@
                                     <input type="text" style="border-width: 3px; width: 300px; height: 35px; border-radius: 15px;  color: black;" name="title"
                                         placeholder="What is the question?" required>
                                     <span style="padding-bottom: 10px;"></span>
-                                    <button type="submit" id="conttrsub" class="my-3"
+                                    <button type="submit" id="conttrsub" class="my-3 hvr-grow-shadow"
                                         style="color: floralwhite; background-color: #667EEA; border-radius: 5px; width: 80px; height: 30px;">Ask</button>
                             </form>
                         </div>

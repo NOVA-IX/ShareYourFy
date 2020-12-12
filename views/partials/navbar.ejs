@@ -22,7 +22,7 @@
   .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #667EEA;
+    background-color: #667EEA !important;
     min-width: 120px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
@@ -51,7 +51,17 @@
     display: block;
     align-self: center;
   }
+  [class^="hvr-"] {
+	 margin: 0.4em;
+	 padding: 1em;
+	 cursor: pointer;
+	 text-decoration: none;
+   border-radius: 20px;
+	 -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	 -webkit-font-smoothing: antialiased;
+}
 </style>
+<link rel="stylesheet" href="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/hover.css">
 <header class="text-gray-500 navbar bg-gray-900 body-font"
   style="width:100%; margin-right: 0; position: fixed; z-index: 5000;">
   <div class="container navbar-fixed mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center"
@@ -61,15 +71,15 @@
       <span class="ml-3 text-xl">shareyourFY</span>
     </a>
     <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
-      <a class="mr-5 hover:text-white"
+      <a class="mr-5 hover:text-white hvr-float-shadow"
         style="<%= title == 'Home' ? 'color: #667EEA; cursor: pointer;' : 'cursor: pointer;' %>" href="/index">Home</a>
-      <a class="mr-5 hover:text-white"
+      <a class="mr-5 hover:text-white hvr-float-shadow"
         style="<%= title == 'About' ? 'color: #667EEA; cursor: pointer;' : 'cursor: pointer;' %>"
         href="/about">About</a>
-      <a class="mr-5 hover:text-white"
+      <a class="mr-5 hover:text-white hvr-float-shadow"
         style="<%= title == 'Services' ? 'color: #667EEA; cursor: pointer;' : 'cursor: pointer;' %>"
         href="/services">Services</a>
-      <a class="mr-5 hover:text-white"
+      <a class="mr-5 hover:text-white hvr-float-shadow"
         style="<%= title == 'Contact' ? 'color: #667EEA; cursor: pointer;' : 'cursor: pointer;' %>"
         href="/contact">Contact</a>
     </nav>
@@ -86,12 +96,12 @@
         </a> -->
     <div class="dropdown">
       <i onclick="myFunction()" class="dropbtn fa fa-2x fa-user-circle" aria-hidden="true"></i>
-      <div id="myDropdown" class="dropdown-content" style="width: min-content;">
-        <a href="#">
+      <div id="myDropdown" class="dropdown-content" style="width: min-content; background-color: #667EEA !important;">
+        <a href="#" class="hvr-bubble-float-top" style="background-color: #667EEA !important;">
           <p class="inline-flex items-center border-0 py-1 px-3 rounded text-base mt-4 md:mt-0"><%= user.username%>
           </p>
         </a>
-        <a href="/logout">
+        <a href="/logout" class="hvr-sink" style="background-color: #667EEA !important;">
           <button id="myBtn" class="inline-flex items-center border-0 py-1 px-3 rounded text-base mt-4 md:mt-0">Logout
             <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
               class="w-4 h-4 ml-1" viewBox="0 0 24 24">
