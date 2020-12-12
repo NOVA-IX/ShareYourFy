@@ -4,7 +4,6 @@ const router = express.Router()
 
 router.get('/',(req,res)=>{
     Post.find({},(err,data)=> {
-        console.log(data)
         res.render('forum',{user: req.session.user,title: "Forum",data: data})
     })
 })

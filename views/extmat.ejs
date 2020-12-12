@@ -42,25 +42,28 @@
 <section class="container mx-auto text-gray-500 bg-gray-900 body-font overflow-hidden">
     <div class="px-5 py-10">
         <div class="-my-8">
-            <% for(let i = 0; i < 5; i++) { %>
+            <% var i = 0 %>
+            <% data.forEach(item=> { %>
+                <% i++ %>
             <div class="py-8 flex flex-wrap md:flex-no-wrap">
                 <div class="md:w-64 md:mb-0 mb-6 flex-shrink-0 flex flex-col">
-                    <span class="text-xl tracking-widest font-medium title-font text-white">Topic</span>
-                    <span class="mt-1 text-gray-600 text-2sm">Editor - 30 Feb 2021</span>
+                    <span class="text-xl tracking-widest font-medium title-font text-white"><%=item.topic%></span>
+                    <span class="mt-1 text-gray-600 text-2sm"><%= item.username%> - <%= item.createdAt.toDateString()%></span>
                 </div>
                 <div class="md:flex-grow">
-                    <h2 class="text-2xl font-medium text-white title-font mb-2">Heading: Bitters hashtag waistcoat
-                        fashion axe
-                        chia unicorn</h2>
-                    <p class="leading-relaxed">Glossier echo park pug, church-key sartorial biodiesel vexillologist
-                        pop-up snackwave ramps cornhole. Marfa 3 wolf moon party messenger bag selfies, poke vaporware
-                        kombucha lumbersexual pork belly polaroid hoodie portland craft beer.</p>
+                    <h2 class="text-2xl font-medium text-white title-font mb-2"><%= item.title%></h2>
+                    <p class="leading-relaxed"><% if (item.markdown.split(' ').length < 40) { %>
+                        <%= item.markdown%>
+                    <% } else { %>
+                        <%= item.markdown.split(' ').slice(0, 40).join(' ')%>. . .
+                    <% } %>
+                    </p>
                 </div>
             </div>
-            <% if(i < (5-1)) { %>
-            <div class="border-b-2 border-gray-800"></div>
-            <% } %>
-            <% } %>
+                <% if(i < data.length) { %>
+                    <div class="border-b-2 border-gray-800"></div>
+                <% } %>
+            <% }) %>
         </div>
     </div>
 </section>
@@ -71,7 +74,7 @@
     style="display: none; position: fixed; z-index: 1; left: 0; top: 0; width: 100%; height: 100%; background-color: #1A202C;">
     <div class="modal-content" style="background-color: #1A202C;">
         <div class="flex flex-col md:py-8" style="width: 25rem;">
-            <form action="#" method="POST">
+            <form action="/services/extra" method="POST">
                 <div class="form-container relative">
                 <span class="close" id="cross" style="float: right;;">&times;</span>
                 <h2 class="text-white text-center text-lg mb-1 font-medium title-font">Publish Your Article</h2>
@@ -81,12 +84,12 @@
                         placeholder="Topic">
                 </div>
                 <div class="relative mb-4">
-                    <input type="text" name="head"
+                    <input type="text" name="title"
                         class="w-full bg-gray-800 rounded border border-gray-700 focus:border-indigo-500 text-base outline-none text-gray-100 py-1 px-3 leading-6 transition-colors duration-200 ease-in-out"
                         placeholder="Heading">
                 </div>
                 <div class="relative mb-4">
-                    <textarea name="article"
+                    <textarea name="markdown"
                         class="w-full bg-gray-800 rounded border border-gray-700 focus:border-indigo-500 h-32 text-base outline-none text-gray-100 py-1 px-3 resize-none leading-4 transition-colors duration-200 ease-in-out"
                         placeholder="Article/URL(s) of resource for topic"></textarea>
                 </div>
