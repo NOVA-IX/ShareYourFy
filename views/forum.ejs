@@ -139,8 +139,10 @@
                 </div>
 
                 <div id="quesbtn" class="hvr-grow-shadow">
-                    <a href='#' id="addques" style="font-size: 2rem; float: right !important; padding: 1rem;">+<span id="questxt"
-                            style="display: none;">Add a Question</span></a>
+                    <a href='#' id="addques" style="font-size: 2rem; float: right !important; padding: 0.6rem 1rem;">+<span id="questxt"
+                            style="display: none;">Add a Question</span>
+                            <span id="hvr" class="text-xl" style="display: none;">Ask a question</span>
+                        </a>
                 </div>
 
                 <div id="quesmodal" class="modal hvr-bounce-in" style="display: none;">
@@ -168,6 +170,14 @@
                     }
                     document.getElementById('cross').onclick = function () {
                         document.getElementById('quesmodal').style.display = 'none';
+                    }
+                </script>
+                <script>
+                    document.getElementById('quesbtn').onmouseover = function () {
+                        document.getElementById('hvr').style.display = 'inline-block';
+                    }
+                    document.getElementById('quesbtn').onmouseleave = function () {
+                        document.getElementById('hvr').style.display = 'none';
                     }
                 </script>
 
