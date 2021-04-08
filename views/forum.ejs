@@ -121,9 +121,9 @@
 
 
                     <script>
-                        let btn = <%= 'btn' + item.id %>
-                            let ans = <%= 'ans' + item.id %>
-                                let link = <%= 'anslink' + item.id %>
+                        let btn = 'btn' + item.id;
+                            let ans = 'ans' + item.id;
+                                let link = 'anslink' + item.id;
                                     document.getElementById(btn).onclick = () => {
                                         if (document.getElementById(ans).style.display == "inline-block") {
                                             document.getElementById(ans).style.display = "none"
