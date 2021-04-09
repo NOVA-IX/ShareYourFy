@@ -1,14 +1,9 @@
-const jwt = require("jsonwebtoken")
-
-module.exports = function (req, res, next) {
-    const token = req.headers["x-access-token"] || req.headers["authorization"]
-    if (!token) return res.redirect('/login')
-
-    try {
-        const decoded = jwt.verify(token, process.env.jwt_secret)
-        req.user = decoded
-        next()
-    } catch (ex) {
-        res.redirect('/login')
+module.exports.checkUser = (req, res, next) => {
+    const nextLink = req.originalUrl;
+    if (req.session.user && req.session.user._id) {
+      next();
+    } else {
+      req.flash('error', 'You must log in to continue');
+      res.redirect(`/login`);
     }
-};
+}

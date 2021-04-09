@@ -9,7 +9,7 @@ const storage = new Storage({
 
 const bucket = storage.bucket("gs://shareyourfy.appspot.com");
 
-const uploadImageToStorage = (file,folder) => {
+module.exports.FirebaseUpload = (file,folder) => {
   return new Promise((resolve, reject) => {
     if (!file) {
       reject('No image file');
@@ -37,5 +37,3 @@ const uploadImageToStorage = (file,folder) => {
     blobStream.end(file.buffer);
   });
 }
-
-exports.FirebaseUpload = uploadImageToStorage

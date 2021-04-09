@@ -14,7 +14,7 @@ const fileFilter = (req, file, cb) => {
 
 const upload = multer({ storage: multer.memoryStorage(), fileFilter: fileFilter })
 
-router.post("/rent",upload.array('upload',5),async (req,res)=>{
+router.post("/",upload.array('upload',5),async (req,res)=>{
     const {title,description,contact,price} = req.body
     
     let urls = []
@@ -42,7 +42,7 @@ router.post("/rent",upload.array('upload',5),async (req,res)=>{
     })
 })
 
-router.get("/rent",(req,res)=>{
+router.get("/",(req,res)=>{
     Textbook.find({},(err,data)=> {
         if(err) res.send(err) 
         else res.render('Trservice',{user: req.session.user,title: "TRServices",data: data})

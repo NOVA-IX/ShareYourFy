@@ -14,7 +14,7 @@ const fileFilter = (req, file, cb) => {
 
 const upload = multer({ storage: multer.memoryStorage(), fileFilter: fileFilter })
 
-router.post("/ed",upload.single('upload'),async (req,res)=>{
+router.post("/",upload.single('upload'),async (req,res)=>{
     const {title,contact,instruments} = req.body
 
     FirebaseUpload(req.file,'EDimages').then(async (url) =>{
@@ -35,7 +35,7 @@ router.post("/ed",upload.single('upload'),async (req,res)=>{
     });
 })
 
-router.get("/ed",(req,res)=>{
+router.get("/",(req,res)=>{
     ED.find({},(err,data)=> {
         if(err) res.send(err) 
         else res.render('Edservice',{user: req.session.user,title: "EdServices",data: data})
