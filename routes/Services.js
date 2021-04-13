@@ -11,6 +11,6 @@ router.use('/ed',checkUser,edroute)
 router.use('/textbook',checkUser,textbook)
 router.use('/forum',checkUser,forum)
 router.use("/extra", checkUser, extra)
-router.use('/ebooks', ebooks)
+router.use('/ebooks',ebooks)
 
 module.exports = router
