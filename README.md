@@ -1,9 +1,7 @@
-# shareyourFY_v2.0-Dark-
+# ShareYourFy
 A platform to share stuffs to help newbies of FE
 
 ShareYourFy: https://shareyourfyback.herokuapp.com/
-
-# DONT MERGE WITH MASTER
 
 # Install instruction
 - clone repo
@@ -12,4 +10,4 @@ ShareYourFy: https://shareyourfyback.herokuapp.com/
 - ```npm install --dev``` if developer
 - create .env file
 - ```npm run dev```
-- http://localhost:5000 to see the site
+- http://localhost:5001 to see the site
