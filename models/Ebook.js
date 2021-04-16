@@ -9,7 +9,11 @@ const ebookSchema = new mongoose.Schema({
 		type: String,
 		required: true,
 	},
-	description: {
+	author: {
+		type: String,
+		required: true,
+	},
+	branch: {
 		type: String,
 		required: true,
 	},
