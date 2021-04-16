@@ -32,7 +32,7 @@ router.post('/', upload.single('upload'), async (req, res) => {
 	} else {
 		FirebaseUpload(req.file, 'ebooks')
 			.then(async (url) => {
-				req.body.uploaderEmail = 'dfs'
+				req.body.uploaderEmail = req.session.user.email
 				req.body.bookUrl = url
 				fetchCoverLink(`${req.body.title} ${req.body.author}`)
 					.then((url) => {
