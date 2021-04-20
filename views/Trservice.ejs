@@ -1,87 +1,242 @@
 <style>
-  @media (max-width: 650px) {
-    .min-sec {
-      padding-top: 220px;
-      text-align: center;
-    }
-  }
+	* {
+		box-sizing: border-box;
+	}
 
-  @media (min-width: 650px) {
-    .min-sec {
-      padding-top: 100px;
-    }
-  }
+	.py-24 {
+		padding-top: 2rem;
+		padding-bottom: 3rem;
+	}
+
+	@media (max-width: 650px) {
+		.min-sec {
+			padding-top: 220px;
+			text-align: center;
+		}
+	}
+
+	@media (min-width: 650px) {
+		.min-sec {
+			padding-top: 100px;
+		}
+	}
+
+	img {
+		vertical-align: middle;
+	}
+
+	/* Slideshow container */
+	.slideshow-container {
+		max-width: 1000px;
+		position: relative;
+		margin: auto;
+	}
+
+	/* Fading animation */
+	.fade {
+		-webkit-animation-name: fade;
+		-webkit-animation-duration: 1.5s;
+		animation-name: fade;
+		animation-duration: 1.5s;
+	}
+
+	@-webkit-keyframes fade {
+		from {
+			opacity: .4
+		}
+
+		to {
+			opacity: 1
+		}
+	}
+
+	@keyframes fade {
+		from {
+			opacity: .4
+		}
+
+		to {
+			opacity: 1
+		}
+	}
 </style>
+
 <style>
-  * {
-    box-sizing: border-box;
-  }
+	form {
+		width: 20em;
+		height: 29em;
+		margin-left: 50%;
+		margin-right: 50%;
+		margin-top: 18%;
+		transform: translate(-50%, -50%);
+		background: #1A202C;
+		border: 3px solid #ffffff;
+		border-radius: 10px;
+		display: none;
+		flex-direction: column;
+		justify-content: center;
+	}
 
-  img {
-    vertical-align: middle;
-  }
+	form>heading {
+		text-align: center;
+		margin-bottom: 1em;
+		font-size: 1.5em;
+		color: #667EEA;
+		font-weight: bold;
+	}
 
-  /* Slideshow container */
-  .slideshow-container {
-    max-width: 1000px;
-    position: relative;
-    margin: auto;
-  }
+	form>label {
+		text-align: center;
+		margin: 0.5em 0em 0.5em 0em;
+		font-size: 1em;
+		color: #667EEA;
+	}
 
-  /* Fading animation */
-  .fade {
-    -webkit-animation-name: fade;
-    -webkit-animation-duration: 1.5s;
-    animation-name: fade;
-    animation-duration: 1.5s;
-  }
+	form>span {
+		text-align: right;
+		margin-right: 1em;
+		margin-top: 0.5em;
+		font-size: 1.6em;
+		font-weight: lighter;
+		color: white;
+	}
 
-  @-webkit-keyframes fade {
-    from {
-      opacity: .4
-    }
+	form>span:hover {
+		font-weight: bolder;
+		cursor: default;
+		transform: skew(-1deg, -1deg)
+	}
 
-    to {
-      opacity: 1
-    }
-  }
+	form>input {
+		color: #667EEA;
+		font-size: 1em;
+		padding: 5px;
+		margin: 0 3em 1em 3em;
+		border-radius: 5px;
+	}
 
-  @keyframes fade {
-    from {
-      opacity: .4
-    }
+	.show {
+		display: flex
+	}
 
-    to {
-      opacity: 1
-    }
-  }
+	button {
+		background: #667EEA;
+		color: white;
+		font-size: 1em;
+		cursor: pointer;
+		padding: 5px;
+		border-radius: 5px;
+	}
+
+	.radio-label {
+		display: inline-block;
+		color: #e7f4ed;
+		margin-bottom: 10px;
+	}
+
+	.radio-label input {
+		opacity: 0;
+		position: absolute
+	}
+
+	.radio-label .inner-label {
+		position: relative;
+		display: inline-block;
+		font-size: 18px;
+		padding-left: 20px;
+	}
+
+	.radio-label .inner-label:before {
+		content: "";
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		border-bottom: 2px dashed #667EEA;
+		width: 13px;
+		transition: border-bottom ease;
+	}
+
+	.radio-label input:focus~.inner-label:before {
+		border-bottom: 2px solid #667EEA;
+	}
+
+	.radio-label input:checked~.inner-label:after {
+		content: "\2713";
+		color: #667EEA;
+		position: absolute;
+		font-size: 1em;
+		font-weight: bold;
+		left: 0px;
+		top: -2px;
+	}
+
+	.options {
+		display: grid;
+		margin-left: 2em;
+		margin-bottom: 1em;
+		grid-template-columns: 10em 10em;
+	}
 </style>
-<section class="container mx-auto min-sec text-gray-500 bg-gray-900 body-font">
-  <h1 class="text-3xl font-medium text-indigo-500 title-font px-5">Textbook Renting/Buying</h1>
-  <div class="container px-5 py-10 mx-auto">
-    <div class="flex flex-wrap -m-4">
 
-      <% data.forEach(item => { %>
-      <div class="lg:w-1/4 md:w-1/2 p-4 w-full" style="z-index: 1;">
+<form action="/services/textbook" method="POST" enctype="multipart/form-data" class="" style="position: absolute; z-index: 100;">
+	<span class="close" id="cross3" onclick="formFunction(false)">&times;</span>
+	<heading>Share Textbooks</heading>
+	<input type="text" name="title" placeholder="Textbook Name" required/>
+	<input type="text" name="description" placeholder="Description" required/>
+	<input type="tel" pattern="[0-9]{10}" name="contact" placeholder="8796253421 (Contact No.)" required/>
+	<input type="text" name="price" placeholder="Base Price(if any)" />
+	<label for="upload">*Upload image of textbook</label>
+	<input type="file" name="upload" multiple/>
+	<input type="submit" value="Upload" style="background: #667EEA; color: floralwhite; cursor: pointer" />
+</form>
 
-        <div class="slideshow-container">
-          <div class="mySlides fade">
-            <img src="<%= item.imageUrl[0] %>" style="width:100%; cursor: pointer;" id="image">
-          </div>
-        </div>
+<div class="container px-5 mx-auto" style="padding-top: 2rem; padding-bottom: 2rem;">
+	<div class="flex flex-col sm:flex-row sm:items-center items-start mx-auto"
+		style="display: flex; align-items: center">
+		<h1 class="text-3xl flex-grow sm:pr-16 font-medium title-font text-indigo-500">
+			Textbook Renting/Buying
+		</h1>
+		<button id="blogbtn" style="margin-top: 1rem" onclick="formFunction(true)"
+			class="flex-shrink-0 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg mt-10 sm:mt-0">
+			Upload
+		</button>
+	</div>
+</div>
 
-        <div class="mt-4 text-center">
-          <h2 class="text-white title-font text-lg font-medium"><%= item.title%></h2>
-          <h3 class="text-gray-500 text-2xs tracking-widest title-font mb-1"><%= item.description%></h3>
-          <p class="mt-1">Contact: <%= item.contact%></p>
-          <p class="mt-1">Base price: <%= item.price%></p>
-        </div>
-      </div>
-      <% }) %>
-    </div>
-  </div>
-  </div>
+<section class="text-gray-400 bg-gray-900 body-font">
+	<div class="container px-5 py-24 mx-auto flex">
+		<div class="flex flex-wrap -m-4">
+			<% data.forEach(item=> { %>
+				<div class="lg:w-1/4 md:w-1/2 p-4 w-full" style="z-index: 1;">
+					<div class="slideshow-container">
+						<div class="mySlides fade">
+							<img src="<%= item.imageUrl[0] %>" style="width:100%; cursor: pointer;" id="image">
+						</div>
+					</div>
+					<div class="mt-4 text-center">
+						<h2 class="text-white title-font text-lg font-medium">
+							<%= item.title%>
+						</h2>
+						<h3 class="text-gray-500 text-2xs tracking-widest title-font mb-1">
+							<%= item.description%>
+						</h3>
+						<p class="mt-1">Contact: <%= item.contact%>
+						</p>
+						<p class="mt-1">Base price: <%= item.price%>
+						</p>
+					</div>
+				</div>
+				<% }) %>
+		</div>
+	</div>
+</section>
 
-  <script>
-    val image = document.find
-  </script>
+
+<script>
+	let form = document.querySelector('form')
+
+	function formFunction(display) {
+		if (display) form.classList.add('show')
+		else form.classList.remove('show')
+	}
+</script>

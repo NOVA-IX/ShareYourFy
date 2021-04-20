@@ -31,7 +31,7 @@ router.post("/",upload.array('upload',5),async (req,res)=>{
                     price: price
                 })
                 await newTextbook.save()
-                res.redirect('/services/rent')
+                res.redirect('/services/textbook')
             }
         }).catch((err)=>{
             res.status(200).json({
