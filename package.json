@@ -4,7 +4,8 @@
 	"description": "",
 	"main": "server.js",
 	"scripts": {
-		"dev": "DEBUG=sfy:* nodemon -r dotenv/config server.js",
+		"dev": "set DEBUG=sfy:*  && nodemon -r dotenv/config server.js",
+		"pure": " nodemon -r dotenv/config server.js",
 		"start": "node server.js",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
