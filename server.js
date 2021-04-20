@@ -9,6 +9,7 @@ const cookieParser = require('cookie-parser')
 var expressLayouts = require('express-ejs-layouts')
 const { fetchImage } = require('./utils/fetchImage')
 const MongoStore = require('connect-mongodb-session')(session)
+const flash = require('connect-flash')
 const debug = require('debug')('sfy:server')
 
 global._basedir = __dirname
@@ -25,6 +26,7 @@ app.use(bodyParser.json())
 app.use(express.static(__dirname + '/public'))
 app.use(cookieParser())
 app.use(expressLayouts)
+app.use(flash())
 
 //database connect
 mongoose.connect(
