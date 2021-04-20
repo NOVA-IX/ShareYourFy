@@ -57,8 +57,6 @@
                     <div class="flex justify-center" style="padding-top: 15px;">
                         <a href="/services/ed"><button id="acced"
                             class="inline-flex hvr-grow-shadow  text-white bg-indigo-500 border-0 py-1 px-4 focus:outline-none hover:bg-indigo-600 rounded text-lg">Access</button></a>
-                        <button id="conted"
-                            class="ml-4 inline-flex hvr-grow-shadow  text-gray-400 bg-gray-800 border-0 py-1 px-4 focus:outline-none hover:bg-gray-700 hover:text-white rounded text-lg">Contribute</button>
                     </div>
                 </div>
             </div>
@@ -149,51 +147,6 @@
                     name="price" placeholder="Base Price if any">
                 <span style="padding-bottom: 10px;"></span>
                 <button type="submit" id="conttrsub"
-                    style="color: floralwhite; background-color: #667EEA; border-radius: 5px; width: 80px; height: 30px;">Submit</button>
-            </form>
-        </div>
-    </div>
-</div>
-
-<div id="cont_ed_modal" class="modal hvr-wobble-vertical" style="display: none;">
-    <div class="modal-content" style="background-color: #1A202C; margin: 8% auto; padding: 0px 20px;">
-        <span class="close" id="cross2">&times;</span>
-        <div class="form-container sign-up-container">
-            <form action="/services/ed" id="cont_ed_form" method="POST" enctype="multipart/form-data">
-                <span style="padding-bottom: 10px; color: #667EEA; padding-top: 10px;">Click on the materials you
-                    want to share -\-></span>
-                <input type="textbox" style="border-width: 3px; width: 300px; height: 50px; border-radius: 15px;"
-                    name="title" id="Handover" placeholder="Handover Instruction" required>
-                <span style="padding-bottom: 10px;"></span>
-                <input type="file" style="border-width: 3px; width: 300px; height: 35px; border-radius: 15px;" name="upload"
-                    id="image" required multiple>
-                <label for="image" style="color: aliceblue;">*Upload&nbsp;image&nbsp;containing&nbsp;all&nbsp;instruments</label>
-                <input type="tel" pattern="[0-9]{10}"
-                    style="border-width: 3px; width: 300px; height: 35px; border-radius: 15px;" name="contact"
-                    id="Contact" placeholder="Contact Number eg. 9876543210" required>
-                <span style="padding-bottom: 10px;"></span>
-                <div style="text-align: left; color: antiquewhite;">
-                    <input type="checkbox" id="ed1" name="instruments[]" value="Roller Scale">
-                    <label for="ed1"> Roller Scale</label><br>
-                    <span style="padding-bottom: 10px;"></span>
-                    <input type="checkbox" id="ed2" name="instruments[]" value="Mini-Drafter">
-                    <label for="ed2"> Mini-Drafter</label><br>
-                    <span style="padding-bottom: 10px;"></span>
-                    <input type="checkbox" id="ed3" name="instruments[]" value="Container">
-                    <label for="ed3"> Container</label><br>
-                    <span style="padding-bottom: 10px;"></span>
-                    <input type="checkbox" id="ed4" name="instruments[]" value="Set Sqaures">
-                    <label for="ed4"> Set Squares</label><br>
-                    <span style="padding-bottom: 10px;"></span>
-                    <input type="checkbox" id="ed5" name="instruments[]" value="French Curve">
-                    <label for="ed5"> French Curve</label><br>
-                    <span style="padding-bottom: 10px;"></span>
-                    <input type="checkbox" id="ed6" name="instruments[]" value="Clips">
-                    <label for="ed6"> Clips</label><br>
-                    <span style="padding-bottom: 10px;"></span>
-                </div>
-                <span style="padding-bottom: 10px;"></span>
-                <button type="submit" id="cont_ed_sub"
                     style="color: floralwhite; background-color: #667EEA; border-radius: 5px; width: 80px; height: 30px;">Submit</button>
             </form>
         </div>

@@ -1,35 +1,215 @@
 <style>
-    @media (max-width: 650px) {
-      .min-sec {
-        padding-top: 220px;
-		text-align: center;
-      }
-    }
-  
-    @media (min-width: 650px) {
-      .min-sec {
-        padding-top: 100px;
-      }
-    }
-  </style>
-<section class="container mx-auto min-sec text-gray-500 bg-gray-900 body-font">
-	<h1 class="text-3xl font-medium text-indigo-500 title-font px-5">Engineering Drawing Materials</h1>
-	<div class="container px-5 py-10 mx-auto">
-		<div class="flex flex-wrap -m-4">
+	@media (max-width: 650px) {
+		.min-sec {
+			padding-top: 220px;
+			text-align: center;
+		}
+	}
 
-			<% data.forEach(item => { %>
-			<div class="lg:w-1/4 md:w-1/2 p-4 w-full" style="z-index: 1;">
-				<a class="block relative h-48 rounded overflow-hidden">
-					<img alt="ecommerce" class="object-cover object-center w-full h-full block" style="object-fit: contain;"
-						src="<%= item.imageUrl%>" accept="image/*">
-				</a>
-				<div class="mt-4 text-center">
-					<h2 class="text-white title-font text-lg font-medium"><%= item.instruments.join(", ")%></h2>
-					<h3 class="text-gray-500 text-2xs tracking-widest title-font mb-1"><%= item.title%></h3>
-					<p class="mt-1">Contact: <%= item.contact%></p>
+	.py-24 {
+		padding-top: 2rem;
+		padding-bottom: 3rem;
+	}
+</style>
+
+<style>
+	form {
+		width: 21em;
+		height: 30em;
+		margin-left: 50%;
+		margin-right: 50%;
+		margin-top: 18%;
+		transform: translate(-50%, -50%);
+		background: #1A202C;
+		border: 3px solid #ffffff;
+		border-radius: 10px;
+		display: none;
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	form>heading {
+		text-align: center;
+		margin-bottom: 1em;
+		font-size: 1.5em;
+		color: #667EEA;
+		font-weight: bold;
+	}
+
+	form>label {
+		text-align: center;
+		margin: 0.5em 0em 0.2em 0em;
+		font-size: 1em;
+		color: #667EEA;
+	}
+
+	form>span {
+		text-align: right;
+		margin-right: 1em;
+		margin-top: 0.5em;
+		font-size: 1.6em;
+		font-weight: lighter;
+		color: white;
+	}
+
+	form>span:hover {
+		font-weight: bolder;
+		cursor: default;
+		transform: skew(-1deg, -1deg)
+	}
+
+	form>input {
+		color: #667EEA;
+		font-size: 1em;
+		padding: 5px;
+		margin: 0 3em 1em 3em;
+		border-radius: 5px;
+	}
+
+	.show {
+		display: flex
+	}
+
+	button {
+		background: #667EEA;
+		color: white;
+		font-size: 1em;
+		cursor: pointer;
+		padding: 5px;
+		border-radius: 5px;
+	}
+
+	.radio-label {
+		display: inline-block;
+		color: #e7f4ed;
+		margin-bottom: 10px;
+	}
+
+	.radio-label input {
+		opacity: 0;
+		position: absolute
+	}
+
+	.radio-label .inner-label {
+		position: relative;
+		display: inline-block;
+		font-size: 18px;
+		padding-left: 20px;
+	}
+
+	.radio-label .inner-label:before {
+		content: "";
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		border-bottom: 2px dashed #667EEA;
+		width: 13px;
+		transition: border-bottom ease;
+	}
+
+	.radio-label input:focus~.inner-label:before {
+		border-bottom: 2px solid #667EEA;
+	}
+
+	.radio-label input:checked~.inner-label:after {
+		content: "\2713";
+		color: #667EEA;
+		position: absolute;
+		font-size: 1em;
+		font-weight: bold;
+		left: 0px;
+		top: -2px;
+	}
+
+	.options {
+		display: grid;
+		margin-left: 2em;
+		margin-bottom: 1em;
+		grid-template-columns: 10em 10em;
+	}
+</style>
+
+<form class="" action="/services/ed" method="POST" enctype="multipart/form-data"
+	style="position: absolute; z-index: 100;">
+	<span class="close" id="cross3" onclick="formFunction(false)">&times;</span>
+	<heading>Share ED Instruments</heading>
+	<input type="textbox" name="title" id="Handover" placeholder="Handover Instructions" required />
+	<input type="tel" pattern="[0-9]{10}" name="contact" id="Contact" placeholder="8796253421 (Contact No.)" required />
+	<label for="upload">*Upload image showing all instruments</label>
+	<input type="file" name="upload" id="image" required multiple />
+
+	<div class="options">
+		<label class="radio-label">
+			<input class="input-rad" id="ed1" name="instruments[]" value="Roller Scale" type="checkbox" checked="checked" /><span
+				class="inner-label" checked>Roller Scale</span>
+		</label>
+		<label class="radio-label">
+			<input class="input-rad" id="ed2" name="instruments[]" value="Mini-Drafter" type="checkbox" /><span
+				class="inner-label">Mini-Drafter</span>
+		</label>
+		<label class="radio-label">
+			<input class="input-rad" id="ed3" name="instruments[]" value="Container" type="checkbox" /><span
+				class="inner-label">Container</span>
+		</label>
+		<label class="radio-label">
+			<input class="input-rad" id="ed4" name="instruments[]" value="Set-Squares" type="checkbox" /><span
+				class="inner-label">Set-Squares</span>
+		</label>
+		<label class="radio-label">
+			<input class="input-rad" id="ed5" name="instruments[]" value="French Curve" type="checkbox" /><span
+				class="inner-label">French
+				Curve</span>
+		</label>
+		<label class="radio-label">
+			<input class="input-rad" id="ed6" name="instruments[]" value="Clips" type="checkbox" /><span
+				class="inner-label">Clips</span>
+		</label>
+	</div>
+	<input type="submit" value="Submit" style="background: #667EEA; color: floralwhite; cursor: pointer" />
+</form>
+
+<div class="container px-5 mx-auto" style="padding-top: 2rem; padding-bottom: 2rem;">
+	<div class="flex flex-col sm:flex-row sm:items-center items-start mx-auto"
+		style="display: flex; align-items: center">
+		<h1 class="text-3xl flex-grow sm:pr-16 font-medium title-font text-indigo-500">
+			Engineering Drawing Materials
+		</h1>
+		<button id="blogbtn" style="margin-top: 1rem" onclick="formFunction(true)"
+			class="flex-shrink-0 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg mt-10 sm:mt-0">
+			Upload
+		</button>
+	</div>
+</div>
+
+<section class="text-gray-400 bg-gray-900 body-font">
+	<div class="container px-5 py-24 mx-auto flex">
+		<div class="flex flex-wrap -m-4">
+			<% data.forEach(item=> { %>
+				<div class="lg:w-1/4 md:w-1/2 p-4 w-full" style="z-index: 1;">
+					<a class="block relative h-48 rounded overflow-hidden">
+						<img alt="ecommerce" class="object-cover object-center w-full h-full block"
+							style="object-fit: contain;" src="<%= item.imageUrl%>" accept="image/*">
+					</a>
+					<div class="mt-4 text-center">
+						<h2 class="text-white title-font text-lg font-medium">
+							<%= item.instruments.join(", ")%></h2>
+						<h3 class=" text-gray-500 text-2xs tracking-widest title-font mb-1">
+								<%= item.title%>
+									</h3>
+									<p class="mt-1">Contact: <%= item.contact%>
+									</p>
+					</div>
 				</div>
-			</div>
-			<% }) %>
+				<% }) %>
 		</div>
 	</div>
-	</div>
+</section>
+
+<script>
+	let form = document.querySelector('form')
+
+	function formFunction(display) {
+		if (display) form.classList.add('show')
+		else form.classList.remove('show')
+	}
+</script>
