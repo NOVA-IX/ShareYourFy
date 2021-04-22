@@ -1,4 +1,9 @@
 <style>
+    body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
     .py-24 {
         padding-top: 2rem;
     }
@@ -7,162 +12,155 @@
     }
 </style>
 
-<div class="container px-5 mx-auto" style="padding-top: 2rem; padding-bottom: 2rem">
-    <div class="flex flex-col sm:flex-row sm:items-center items-start mx-auto" style="display: flex; align-items: center;">
-        <h1 class="text-3xl flex-grow sm:pr-16 font-medium title-font text-indigo-500">
+<form class="modal" style="position: absolute;">
+    <span class="close" id="cross3" onclick="formFunction(false)">&times;</span>
+    <heading>Upload Ebook Pdf</heading>
+    <input type="text" name="title" placeholder="Ebook Name" />
+    <input type="text" name="branch" placeholder="Branch" />
+    <input type="text" name="author" placeholder="Author's Name" />
+    <input type="file" name="upload" />
+    <input
+        type="submit"
+        value="Upload"
+        style="background: #667eea; color: floralwhite; cursor: pointer"
+    />
+</form>
+
+<div
+    class="container px-5 mx-auto"
+    style="padding-top: 2rem; padding-bottom: 2rem"
+>
+    <div
+        class="flex flex-col sm:flex-row sm:items-center items-start mx-auto"
+        style="display: flex; align-items: center"
+    >
+        <h1
+            class="text-3xl flex-grow sm:pr-16 font-medium title-font text-indigo-500"
+        >
             E-Books
         </h1>
+    <form>
         <div class="relative sm:w-64 w-40 sm:mr-4 mr-2">
-            <input type="text" id="footer-field" name="footer-field" style="margin-top: 15px;"
-                class="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:ring-2 focus:ring-indigo-900 focus:bg-transparent focus:border-indigo-500 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" placeholder="Search"/>
+            <input
+                type="text"
+                id="footer-field"
+                name="query"
+                style="margin-top: 15px"
+                class="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:ring-2 focus:ring-indigo-900 focus:bg-transparent focus:border-indigo-500 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                placeholder="Search"
+            />
         </div>
-        <button id="blogbtn" style="margin-top: 1rem;"
-            class="flex-shrink-0 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg mt-10 sm:mt-0">
+    </form>
+        <button
+            id="blogbtn"
+            style="margin-top: 1rem"
+            onclick="formFunction(true)"
+            class="flex-shrink-0 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg mt-10 sm:mt-0"
+        >
             Upload
         </button>
     </div>
 </div>
 
 <section class="text-gray-400 bg-gray-900 body-font">
-    <div class="container px-5 py-24 mx-auto flex flex-wrap">
+    <div class="container px-5 py-24 mx-auto flex">
         <div class="flex flex-wrap -m-4">
-            <div class="p-4 lg:w-1/2 md:w-full">
-                <div class="flex border-2 rounded-lg border-gray-800 p-8 sm:flex-row flex-col">
+            <% data.forEach(item => { %>
+            <div class="p-4 lg:w-1/1">
+                <div
+                    class="flex border-2 rounded-lg border-gray-800 p-8 sm:flex-row flex-col"
+                >
                     <div
-                        class="w-16 h-16 sm:mr-8 sm:mb-0 mb-4 inline-flex items-center justify-center rounded-full bg-gray-800 text-indigo-400 flex-shrink-0">
-                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                            stroke-width="2" class="w-8 h-8" viewBox="0 0 24 24">
-                            <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
-                        </svg>
+                        class="w-16 h-16 sm:mr-8 sm:mb-0 mb-4 inline-flex items-center justify-center rounded-full bg-gray-800 text-indigo-400 flex-shrink-0"
+                    >
+                        <img src="<%= item.coverUrl %>">
                     </div>
                     <div class="flex-grow">
-                        <h2 class="text-white text-lg title-font font-medium mb-3">
-                            Book Name
+                        <h2
+                            class="text-white text-lg title-font font-medium mb-3"
+                        >
+                        <%= item.title%>
                         </h2>
                         <p class="leading-relaxed text-base">
-                            Author1, Author2 - Detials>Blue bottle crucifix
-                            vinyl post-ironic four dollar toast vegan taxidermy.
-                            Gastropub indxgo juice poutine.
+                            <%= item.description%>
                         </p>
-                        <a class="mt-3 text-indigo-400 inline-flex items-center">Download
-                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
+                        <a class="mt-3 text-indigo-400 inline-flex items-center" href= "<%= item.bookUrl%>"
+                            >Download
+                            <svg
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                class="w-4 h-4 ml-2"
+                                viewBox="0 0 24 24"
+                            >
                                 <path d="M5 12h14M12 5l7 7-7 7"></path>
                             </svg>
                         </a>
                     </div>
                 </div>
             </div>
-
-            <img src="../public/img/expectations.jpg" alt="" />
-            <div class="p-4 lg:w-1/2 md:w-full">
-                <div class="flex border-2 rounded-lg border-gray-800 p-8 sm:flex-row flex-col">
-                    <div
-                        class="w-16 h-16 sm:mr-8 sm:mb-0 mb-4 inline-flex items-center justify-center rounded-full bg-gray-800 text-indigo-400 flex-shrink-0">
-                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                            stroke-width="2" class="w-8 h-8" viewBox="0 0 24 24">
-                            <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
-                        </svg>
-                    </div>
-                    <div class="flex-grow">
-                        <h2 class="text-white text-lg title-font font-medium mb-3">
-                            Shooting Stars
-                        </h2>
-                        <p class="leading-relaxed text-base">
-                            Author1, Author2 - Detials>Blue bottle crucifix
-                            vinyl post-ironic four dollar toast vegan taxidermy.
-                            Gastropub indxgo juice poutine.
-                        </p>
-                        <a class="mt-3 text-indigo-400 inline-flex items-center">Download
-                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
-                                <path d="M5 12h14M12 5l7 7-7 7"></path>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="p-4 lg:w-1/2 md:w-full">
-                <div class="flex border-2 rounded-lg border-gray-800 p-8 sm:flex-row flex-col">
-                    <div
-                        class="w-16 h-16 sm:mr-8 sm:mb-0 mb-4 inline-flex items-center justify-center rounded-full bg-gray-800 text-indigo-400 flex-shrink-0">
-                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                            stroke-width="2" class="w-8 h-8" viewBox="0 0 24 24">
-                            <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
-                        </svg>
-                    </div>
-                    <div class="flex-grow">
-                        <h2 class="text-white text-lg title-font font-medium mb-3">
-                            Shooting Stars
-                        </h2>
-                        <p class="leading-relaxed text-base">
-                            Author1, Author2 - Detials>Blue bottle crucifix
-                            vinyl post-ironic four dollar toast vegan taxidermy.
-                            Gastropub indxgo juice poutine.
-                        </p>
-                        <a class="mt-3 text-indigo-400 inline-flex items-center">Download
-                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
-                                <path d="M5 12h14M12 5l7 7-7 7"></path>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="p-4 lg:w-1/2 md:w-full">
-                <div class="flex border-2 rounded-lg border-gray-800 p-8 sm:flex-row flex-col">
-                    <div
-                        class="w-16 h-16 sm:mr-8 sm:mb-0 mb-4 inline-flex items-center justify-center rounded-full bg-gray-800 text-indigo-400 flex-shrink-0">
-                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                            stroke-width="2" class="w-8 h-8" viewBox="0 0 24 24">
-                            <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
-                        </svg>
-                    </div>
-                    <div class="flex-grow">
-                        <h2 class="text-white text-lg title-font font-medium mb-3">
-                            Shooting Stars
-                        </h2>
-                        <p class="leading-relaxed text-base">
-                            Author1, Author2 - Detials>Blue bottle crucifix
-                            vinyl post-ironic four dollar toast vegan taxidermy.
-                            Gastropub indxgo juice poutine.
-                        </p>
-                        <a class="mt-3 text-indigo-400 inline-flex items-center">Download
-                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
-                                <path d="M5 12h14M12 5l7 7-7 7"></path>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="p-4 lg:w-1/2 md:w-full">
-                <div class="flex border-2 rounded-lg border-gray-800 p-8 sm:flex-row flex-col">
-                    <div
-                        class="w-16 h-16 sm:mr-8 sm:mb-0 mb-4 inline-flex items-center justify-center rounded-full bg-gray-800 text-indigo-400 flex-shrink-0">
-                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                            stroke-width="2" class="w-8 h-8" viewBox="0 0 24 24">
-                            <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
-                        </svg>
-                    </div>
-                    <div class="flex-grow">
-                        <h2 class="text-white text-lg title-font font-medium mb-3">
-                            Shooting Stars
-                        </h2>
-                        <p class="leading-relaxed text-base">
-                            Author1, Author2 - Detials>Blue bottle crucifix
-                            vinyl post-ironic four dollar toast vegan taxidermy.
-                            Gastropub indxgo juice poutine.
-                        </p>
-                        <a class="mt-3 text-indigo-400 inline-flex items-center">Download
-                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
-                                <path d="M5 12h14M12 5l7 7-7 7"></path>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
+            <% }) %>
         </div>
     </div>
 </section>
+
+
+<style>
+    .modal {
+        width: 20em;
+        height: 25em;
+        margin-top: 1%;
+        background: #1a202c;
+        border: 2px solid #ffffff;
+        border-radius: 10px;
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .modal > heading {
+        text-align: center;
+        margin-bottom: 1em;
+        font-size: 1.5em;
+        color: #667eea;
+        font-weight: bold;
+    }
+
+    .modal > span {
+        text-align: right;
+        margin-right: 1em;
+        margin-top: -1em;
+        font-size: 1.6em;
+        font-weight: lighter;
+        color: white;
+    }
+
+    .modal > span:hover {
+        font-weight: bolder;
+        cursor: default;
+        transform: skew(-1deg, -1deg);
+    }
+
+    .modal > input {
+        color: #667eea;
+        font-size: 1em;
+        padding: 5px;
+        margin: 0 3em 1em 3em;
+        border-radius: 5px;
+    }
+
+    .show {
+        display: flex;
+    }
+</style>
+
+<script>
+    let form = document.querySelector("form");
+
+    function formFunction(display) {
+        if (display) form.classList.add("show");
+        else form.classList.remove("show");
+    }
+</script>

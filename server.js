@@ -7,50 +7,62 @@ const main = require('./routes/main')
 const session = require('express-session')
 const cookieParser = require('cookie-parser')
 var expressLayouts = require('express-ejs-layouts')
+const { fetchImage } = require('./utils/fetchImage')
 const MongoStore = require('connect-mongodb-session')(session)
+const flash = require('connect-flash')
+const debug = require('debug')('sfy:server')
+
 global._basedir = __dirname
 
 const app = express()
 
 app.set('layout', __dirname + '/views/layouts/root')
-app.set("layout login", false);
-app.set('view engine','ejs')
+app.set('layout login', false)
+app.set('view engine', 'ejs')
 
 //middlewares
-app.use(bodyParser.urlencoded({extended: true}))
+app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
-app.use(express.static(__dirname + "/public"))
+app.use(express.static(__dirname + '/public'))
 app.use(cookieParser())
 app.use(expressLayouts)
+app.use(flash())
 
 //database connect
-mongoose.connect(process.env.DB_URI, { useNewUrlParser: true, useUnifiedTopology: true},(err)=>{
-    if(err) console.log(err)
-    else console.log("Database Connected")
-})
+mongoose.connect(
+	process.env.DB_URI,
+	{ useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true },
+	(err) => {
+		if (err) debug(err)
+		else debug('Database Connected')
+	}
+)
 
 //user session
-app.use(session({
-    name: 'user_sid',
-    secret: 'somerandonstuffs',
-    resave: false,
-    saveUninitialized: false,
-    store: new MongoStore({ uri: process.env.DB_URI }),
-    cookie: {
-        maxAge: 1000 * 60 * 60 * 24 * 7 * 2 //two weeks
-    }
-}));
+app.use(
+	session({
+		name: 'user_sid',
+		secret: 'somerandonstuffs',
+		resave: false,
+		saveUninitialized: false,
+		store: new MongoStore({ uri: process.env.DB_URI }),
+		cookie: {
+			maxAge: 1000 * 60 * 60 * 24 * 7 * 2, //two weeks
+		},
+	})
+)
 
 app.use((req, res, next) => {
-    // if (req.cookies.user_sid && !req.session.user) res.clearCookie('user_sid');
-    next();
-});
+	res.locals.error = req.flash('error')
+	res.locals.success = req.flash('success')
+	next()
+})
 
 //route
-app.use('/auth',auth) 
-app.use('/services',services)
-app.use('/',main)
+app.use('/auth', auth)
+app.use('/services', services)
+app.use('/', main)
 
 //server
 const port = process.env.PORT || 5001
-app.listen(port,()=> console.log(`Server listening on ${port}`))
+app.listen(port, () => debug(`Server listening on ${port}`))
