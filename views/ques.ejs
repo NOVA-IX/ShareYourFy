@@ -1,63 +1,35 @@
-<style>
-    .modal {
-        display: none;
-        position: fixed;
-        z-index: 1;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-    }
-    
-    .modal-content {
-        background-color: #fefefe;
-        margin: 15% auto;
-        /* 15% from the top and centered */
-        padding: 20px;
-        border: 1px solid #888;
-        width: min-content;
-        /* Could be more or less, depending on screen size */
-    }
+<form action="/services/forum/<%=data.id%>/comment" method="POST" class="modal" style="position: absolute;">
+    <span class="close" id="cross3" onclick="formFunction(false)">&times;</span>
+    <heading>Answer goes here >></heading>
+    <textarea id="message" name="comment"
+        class="w-full bg-gray-800 rounded border border-gray-700 focus:border-indigo-500 h-32 text-base outline-none text-gray-100 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
+        placeholder="Type your answer here..." style="width: 20em; align-self: center;"></textarea>
+    <div class="p-2 w-full">
+        <button
+            class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Submit</button>
+    </div>
+</form>
 
-    /* The Close Button */
-    .close {
-        color: #aaa;
-        float: right;
-        font-size: 28px;
-        font-weight: bold;
-    }
-
-    .close:hover,
-    .close:focus {
-        color: black;
-        text-decoration: none;
-        cursor: pointer;
-    }
-    [class^="hvr-"] {
-	 margin: 0.4em;
-	 padding: 1em;
-	 cursor: pointer;
-	 background: #e1e1e1;
-	 text-decoration: none;
-	 color: #666;
-	 -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-	 -webkit-font-smoothing: antialiased;
-}
-</style>
-<link rel="stylesheet" href="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/hover.css">
 <section class="text-gray-500 bg-gray-900 body-font">
-    <div class="container px-5 mx-auto" style="padding-top: 8rem; padding-bottom: 2rem;">
-        <div class="lg:w-2/3 flex flex-col sm:flex-row sm:items-center items-start mx-auto">
-            <h1 class="flex-grow sm:pr-16 text-2xl font-medium title-font text-white"><%= data.title%><p class="text-xl text-gray-500 leading-relaxed" style="font-style: italic;"><%= data.username%></p></h1>
-            <button id="replybtn"
-                class="flex-shrink-0 text-white hvr-grow-shadow bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg mt-10 sm:mt-0">Add Answer</button>
+    <div class="container px-5 py-8 mx-auto">
+        <div class="lg:w-2/3 flex items-center flex-col sm:flex-row sm:items-center items-start mx-auto">
+            <h1 class="flex-grow sm:pr-16 text-2xl font-medium title-font text-white" style="width: 100%;">
+                <%= data.title%>
+                    <p class="text-xl text-gray-500 leading-relaxed" style="font-style: italic;">
+                        <%= data.username%>
+                    </p>
+            </h1>
+            <button id="replybtn" onclick="formFunction(true)"
+                class="flex-shrink-0 text-white hvr-grow-shadow bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg mt-10 sm:mt-0">Add
+                Answer</button>
         </div>
     </div>
 </section>
+
 <section class="text-gray-500 bg-gray-900 body-font">
     <div class="container px-5 py-0 mx-auto flex flex-wrap">
-        <% var index = 0 %>
-        <% data.comments.forEach(item => { %>
+        <% var index=0 %>
+            <% data.comments.forEach(item=> { %>
             <% index++ %>
             <div class="flex relative pb-20 sm:items-center md:w-2/3 mx-auto">
                 <div class="h-full w-6 absolute inset-0 flex items-center justify-center">
@@ -65,40 +37,78 @@
                 </div>
                 <div
                     class="flex-shrink-0 w-6 h-6 rounded-full mt-10 sm:mt-0 inline-flex items-center justify-center bg-indigo-500 text-white relative title-font font-medium text-sm">
-                    <%=index %></div>
+                    <%=index %>
+                </div>
                 <div class="flex-grow md:pl-8 pl-6 flex sm:items-center items-start flex-col sm:flex-row">
                     <div class="flex-grow sm:pl-6 mt-6 sm:mt-0">
-                        <h2 class="font-medium title-font text-white mb-1 text-xl"><%= item.comment%></h2>
-                        <p class="leading-relaxed" style="font-style: italic;">- <%= item.username%></p>
+                        <h2 class="font-medium title-font text-white mb-1 text-xl">
+                            <%= item.comment%>
+                        </h2>
+                        <p class="leading-relaxed" style="font-style: italic;">- <%= item.username%>
+                        </p>
                     </div>
                 </div>
             </div>
         <% }) %>
     </div>
 </section>
-<section id="replymodal" class="modal hvr-bounce-in text-gray-500 bg-gray-900 body-font relative" style="display: none; position: fixed; z-index: 1; left: 0; top: 0; width: 100%; height: 100%; background-color: #1A202C;">
-    <div class="modal-content" style="background-color: #1A202C;">
-        <span class="close" id="cross" style="float: right;">&times;</span>
-        <div class="form-container">
-        <form action="/services/forum/<%=data.id%>/comment" id="quesform" method="POST">
-                <div class="p-2 w-full">
-                    <div class="relative">
-                      <label for="message" class="leading-7 text-sm text-gray-400">Tip: Some tip will go here!</label>
-                      <textarea id="message" name="comment" style="width: 500px;" class="w-full bg-gray-800 rounded border border-gray-700 focus:border-indigo-500 h-32 text-base outline-none text-gray-100 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out" placeholder="Type your answer here..."></textarea>
-                    </div>
-                  </div>
-                  <div class="p-2 w-full">
-                    <button class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Submit</button>
-                  </div>
-            </form>
-        </div>
-    </div>
-</section>
-<script>
-    document.getElementById('replybtn').onclick = function () {
-        document.getElementById('replymodal').style.display = 'inline-block';
+
+<style>
+    .modal {
+        z-index: 2;
+        width: 25em;
+        height: 20em;
+        background: #1a202c;
+        border: 2px solid #ffffff;
+        border-radius: 10px;
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        left: 50%;
+        transform: translateX(-50%);
     }
-    document.getElementById('cross').onclick = function () {
-        document.getElementById('replymodal').style.display = 'none';
+
+    .modal>heading {
+        text-align: center;
+        margin-bottom: 1em;
+        font-size: 1.5em;
+        color: #667eea;
+        font-weight: bold;
+    }
+
+    .modal>span {
+        text-align: right;
+        margin-right: 1em;
+        margin-top: -1em;
+        font-size: 1.6em;
+        font-weight: lighter;
+        color: white;
+    }
+
+    .modal>span:hover {
+        font-weight: bolder;
+        cursor: default;
+        transform: skew(-1deg, -1deg);
+    }
+
+    .modal>input {
+        color: #667eea;
+        font-size: 1em;
+        padding: 5px;
+        margin: 0 3em 1em 3em;
+        border-radius: 5px;
+    }
+
+    .show {
+        display: flex;
+    }
+</style>
+
+<script>
+    let form = document.querySelector("form");
+
+    function formFunction(display) {
+        if (display) form.classList.add("show");
+        else form.classList.remove("show");
     }
 </script>
