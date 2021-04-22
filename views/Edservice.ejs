@@ -1,75 +1,4 @@
 <style>
-	@media (max-width: 650px) {
-		.min-sec {
-			padding-top: 220px;
-			text-align: center;
-		}
-	}
-
-	.py-24 {
-		padding-top: 2rem;
-		padding-bottom: 3rem;
-	}
-</style>
-
-<style>
-	form {
-		width: 21em;
-		height: 30em;
-		margin-left: 50%;
-		margin-right: 50%;
-		margin-top: 18%;
-		transform: translate(-50%, -50%);
-		background: #1A202C;
-		border: 3px solid #ffffff;
-		border-radius: 10px;
-		display: none;
-		flex-direction: column;
-		justify-content: center;
-	}
-
-	form>heading {
-		text-align: center;
-		margin-bottom: 1em;
-		font-size: 1.5em;
-		color: #667EEA;
-		font-weight: bold;
-	}
-
-	form>label {
-		text-align: center;
-		margin: 0.5em 0em 0.2em 0em;
-		font-size: 1em;
-		color: #667EEA;
-	}
-
-	form>span {
-		text-align: right;
-		margin-right: 1em;
-		margin-top: 0.5em;
-		font-size: 1.6em;
-		font-weight: lighter;
-		color: white;
-	}
-
-	form>span:hover {
-		font-weight: bolder;
-		cursor: default;
-		transform: skew(-1deg, -1deg)
-	}
-
-	form>input {
-		color: #667EEA;
-		font-size: 1em;
-		padding: 5px;
-		margin: 0 3em 1em 3em;
-		border-radius: 5px;
-	}
-
-	.show {
-		display: flex
-	}
-
 	button {
 		background: #667EEA;
 		color: white;
@@ -129,7 +58,7 @@
 	}
 </style>
 
-<form class="" action="/services/ed" method="POST" enctype="multipart/form-data"
+<form class="modal" action="/services/ed" method="POST" enctype="multipart/form-data"
 	style="position: absolute; z-index: 100;">
 	<span class="close" id="cross3" onclick="formFunction(false)">&times;</span>
 	<heading>Share ED Instruments</heading>
@@ -168,25 +97,25 @@
 	<input type="submit" value="Submit" style="background: #667EEA; color: floralwhite; cursor: pointer" />
 </form>
 
-<div class="container px-5 mx-auto" style="padding-top: 2rem; padding-bottom: 2rem;">
+<div class="container px-5 py-8 mx-auto">
 	<div class="flex flex-col sm:flex-row sm:items-center items-start mx-auto"
 		style="display: flex; align-items: center">
 		<h1 class="text-3xl flex-grow sm:pr-16 font-medium title-font text-indigo-500">
 			Engineering Drawing Materials
 		</h1>
-		<button id="blogbtn" style="margin-top: 1rem" onclick="formFunction(true)"
-			class="flex-shrink-0 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg mt-10 sm:mt-0">
+		<button id="blogbtn" style="align-self: center;" onclick="formFunction(true)"
+			class="flex-shrink-0 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg mt-10-form sm:mt-0">
 			Upload
 		</button>
 	</div>
 </div>
 
 <section class="text-gray-400 bg-gray-900 body-font">
-	<div class="container px-5 py-24 mx-auto flex">
+	<div class="container px-5 py-12 mx-auto flex">
 		<div class="flex flex-wrap -m-4">
 			<% data.forEach(item=> { %>
 				<div class="lg:w-1/4 md:w-1/2 p-4 w-full" style="z-index: 1;">
-					<a class="block relative h-48 rounded overflow-hidden">
+					<a class="block relative h-48 rounded overflow-hidden" style="height: 180px">
 						<img alt="ecommerce" class="object-cover object-center w-full h-full block"
 							style="object-fit: contain;" src="<%= item.imageUrl%>" accept="image/*">
 					</a>
@@ -194,22 +123,79 @@
 						<h2 class="text-white title-font text-lg font-medium">
 							<%= item.instruments.join(", ")%></h2>
 						<h3 class=" text-gray-500 text-2xs tracking-widest title-font mb-1">
-								<%= item.title%>
-									</h3>
-									<p class="mt-1">Contact: <%= item.contact%>
-									</p>
+							<%= item.title%>
+						</h3>
+						<p class="mt-1">Contact: <%= item.contact%>
+						</p>
 					</div>
 				</div>
-				<% }) %>
+			<% }) %>
 		</div>
 	</div>
 </section>
+
+<style>
+    .modal {
+        width: 22em;
+        height: 32em;
+        background: #1a202c;
+        border: 2px solid #ffffff;
+        border-radius: 10px;
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .modal > heading {
+        text-align: center;
+        margin-bottom: 1em;
+        font-size: 1.5em;
+        color: #667eea;
+        font-weight: bold;
+    }
+
+	.modal > label {
+		text-align: center;
+		margin: 0.5em 0em 0.2em 0em;
+		font-size: 1em;
+		color: #667EEA;
+	}
+
+    .modal > span {
+        text-align: right;
+        margin-right: 1em;
+        margin-top: -1em;
+        font-size: 1.6em;
+        font-weight: lighter;
+        color: white;
+    }
+
+    .modal > span:hover {
+        font-weight: bolder;
+        cursor: default;
+        transform: skew(-1deg, -1deg);
+    }
+
+    .modal > input {
+        color: #667eea;
+        font-size: 1em;
+        padding: 5px;
+        margin: 0 3em 1em 3em;
+        border-radius: 5px;
+    }
+
+    .show-form {
+        display: flex;
+    }
+</style>
 
 <script>
 	let form = document.querySelector('form')
 
 	function formFunction(display) {
-		if (display) form.classList.add('show')
-		else form.classList.remove('show')
+		if (display) form.classList.add('show-form')
+		else form.classList.remove('show-form')
 	}
 </script>
