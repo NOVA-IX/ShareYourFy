@@ -8,19 +8,6 @@
 		padding-bottom: 3rem;
 	}
 
-	@media (max-width: 650px) {
-		.min-sec {
-			padding-top: 220px;
-			text-align: center;
-		}
-	}
-
-	@media (min-width: 650px) {
-		.min-sec {
-			padding-top: 100px;
-		}
-	}
-
 	img {
 		vertical-align: middle;
 	}
@@ -115,7 +102,7 @@
 		border-radius: 5px;
 	}
 
-	.show {
+	.show-form {
 		display: flex
 	}
 
@@ -210,7 +197,7 @@
 				<div class="lg:w-1/4 md:w-1/2 p-4 w-full" style="z-index: 1;">
 					<div class="slideshow-container">
 						<div class="mySlides fade">
-							<img src="<%= item.imageUrl[0] %>" style="width:100%; cursor: pointer;" id="image">
+							<img src="<%= item.imageUrl[0] %>" style="width: 100%; cursor: pointer; height: 200px" id="image">
 						</div>
 					</div>
 					<div class="mt-4 text-center">
@@ -236,7 +223,7 @@
 	let form = document.querySelector('form')
 
 	function formFunction(display) {
-		if (display) form.classList.add('show')
-		else form.classList.remove('show')
+		if (display) form.classList.add('show-form')
+		else form.classList.remove('show-form')
 	}
 </script>
