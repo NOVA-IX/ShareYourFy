@@ -1,43 +1,25 @@
-<style>
-    .modal {
-        display: none;
-        position: fixed;
-        z-index: 1;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-    }
+<form action="/services/extra" method="POST" class="modal" style="position: absolute; z-index: 3;">
+	<span class="close" id="cross3" onclick="formFunction(false)">&times;</span>
+	<heading>Add article here!</heading>
+	<input type="text" name="topic" placeholder="Topic" required/>
+	<input type="text" name="title" placeholder="Title" required/>
+    <textarea name="markdown" class="w-full bg-gray-800 rounded border border-gray-700 focus:border-indigo-500 h-32 text-base outline-none text-gray-100 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out" placeholder="Write/Paste here..." style="width: 14em; align-self: center;"></textarea>
+	<input type="submit" value="Upload" style="background: #667EEA; color: floralwhite; cursor: pointer; margin-top: 1em;" />
+</form>
 
-    .modal-content {
-        margin: 8% auto;
-        border: 1px solid #888;
-        width: min-content;
-    }
-
-    /* The Close Button */
-    .close {
-        color: #aaa;
-        float: right;
-        font-size: 28px;
-        font-weight: bold;
-    }
-
-    .close:hover,
-    .close:focus {
-        color: black;
-        text-decoration: none;
-        cursor: pointer;
-    }
-</style>
-<div class="container px-5 mx-auto" style="padding-top: 8rem; padding-bottom: 2rem;">
-    <div class="flex flex-col sm:flex-row sm:items-center items-start mx-auto">
-        <h1 class="text-3xl flex-grow sm:pr-16 font-medium title-font text-indigo-500">Blogs & Urls for extra materials
-        </h1>
-        <button id="blogbtn"
-            class="flex-shrink-0 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg mt-10 sm:mt-0">Add Article</button>
-    </div>
+<div class="container px-5 py-8 mx-auto">
+	<div class="flex flex-col sm:flex-row sm:items-center items-start mx-auto"
+		style="display: flex; align-items: center">
+		<h1 class="text-3xl flex-grow sm:pr-16 font-medium title-font text-indigo-500">
+			Blogs and URLs
+		</h1>
+		<button style="align-self: center;" onclick="formFunction(true)"
+			class="flex-shrink-0 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg mt-10 sm:mt-0">
+			Add Article
+		</button>
+	</div>
 </div>
+
 <h1 class="text-xl" style="float: right;">+</h1>
 <section class="container mx-auto text-gray-500 bg-gray-900 body-font overflow-hidden">
     <div class="px-5 py-10">
@@ -68,44 +50,69 @@
     </div>
 </section>
 
+<style>
+    .modal {
+        width: 20em;
+        height: 27em;
+        background: #1a202c;
+        border: 2px solid #ffffff;
+        border-radius: 10px;
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
 
+    .modal > heading {
+        text-align: center;
+        margin-bottom: 1em;
+        font-size: 1.5em;
+        color: #667eea;
+        font-weight: bold;
+    }
 
-<div id="blogmodal" class="modal"
-    style="display: none; position: fixed; z-index: 1; left: 0; top: 0; width: 100%; height: 100%; background-color: #1A202C;">
-    <div class="modal-content" style="background-color: #1A202C;">
-        <div class="flex flex-col md:py-8" style="width: 25rem;">
-            <form action="/services/extra" method="POST">
-                <div class="form-container relative">
-                <span class="close" id="cross" style="float: right;;">&times;</span>
-                <h2 class="text-white text-center text-lg mb-1 font-medium title-font">Publish Your Article</h2>
-                <div class="relative mb-4">
-                    <input type="text" name="topic"
-                        class="w-full bg-gray-800 rounded border border-gray-700 focus:border-indigo-500 text-base outline-none text-gray-100 py-1 px-3 leading-6 transition-colors duration-200 ease-in-out"
-                        placeholder="Topic">
-                </div>
-                <div class="relative mb-4">
-                    <input type="text" name="title"
-                        class="w-full bg-gray-800 rounded border border-gray-700 focus:border-indigo-500 text-base outline-none text-gray-100 py-1 px-3 leading-6 transition-colors duration-200 ease-in-out"
-                        placeholder="Heading">
-                </div>
-                <div class="relative mb-4">
-                    <textarea name="markdown"
-                        class="w-full bg-gray-800 rounded border border-gray-700 focus:border-indigo-500 h-32 text-base outline-none text-gray-100 py-1 px-3 resize-none leading-4 transition-colors duration-200 ease-in-out"
-                        placeholder="Article/URL(s) of resource for topic"></textarea>
-                </div>
-                <button
-                    class="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Publish</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
+	.modal > label {
+		text-align: center;
+		margin: 0.5em 0em 0.2em 0em;
+		font-size: 1em;
+		color: #667EEA;
+	}
+
+    .modal > span {
+        text-align: right;
+        margin-right: 1em;
+        margin-top: -1em;
+        font-size: 1.6em;
+        font-weight: lighter;
+        color: white;
+    }
+
+    .modal > span:hover {
+        font-weight: bolder;
+        cursor: default;
+        transform: skew(-1deg, -1deg);
+    }
+
+    .modal > input {
+        color: #667eea;
+        font-size: 1em;
+        padding: 5px;
+        margin: 0 3em 1em 3em;
+        border-radius: 5px;
+    }
+
+    .show-form {
+        display: flex;
+    }
+</style>
 
 <script>
-    document.getElementById('blogbtn').onclick = function () {
-        document.getElementById('blogmodal').style.display = 'inline-block';
-    }
-    document.getElementById('cross').onclick = function () {
-        document.getElementById('blogmodal').style.display = 'none';
-    }
+	let form = document.querySelector('form')
+
+	function formFunction(display) {
+		if (display) form.classList.add('show-form')
+		else form.classList.remove('show-form')
+	}
 </script>
