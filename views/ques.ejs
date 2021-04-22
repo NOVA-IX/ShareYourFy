@@ -26,8 +26,8 @@
     </div>
 </section>
 
-<section class="text-gray-500 bg-gray-900 body-font">
-    <div class="container px-5 py-0 mx-auto flex flex-wrap">
+<section class="cent text-gray-500 bg-gray-900 body-font">
+    <div class="container py-0 mx-auto flex flex-wrap">
         <% var index=0 %>
             <% data.comments.forEach(item=> { %>
             <% index++ %>
@@ -54,6 +54,17 @@
 </section>
 
 <style>
+    @media (min-width: 780px) {
+        .cent {
+            margin-left: 46%;
+            transform: translateX(-50%);
+        }
+    }
+    @media (max-width: 780px) {
+        .cent {
+            margin-left: 1em;
+        }
+    }
     .modal {
         z-index: 2;
         width: 25em;
@@ -99,7 +110,7 @@
         border-radius: 5px;
     }
 
-    .show {
+    .show-form {
         display: flex;
     }
 </style>
@@ -108,7 +119,7 @@
     let form = document.querySelector("form");
 
     function formFunction(display) {
-        if (display) form.classList.add("show");
-        else form.classList.remove("show");
+        if (display) form.classList.add("show-form");
+        else form.classList.remove("show-form");
     }
 </script>
