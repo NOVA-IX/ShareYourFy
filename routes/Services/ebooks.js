@@ -62,38 +62,42 @@ router.post('/', upload.single('upload'), async (req, res) => {
 })
 
 router.get('/', (req, res) => {
-	Ebook.find({}, (err, data) => {
-		if (err) {
-			res.flash('error', 'Something went wrong!')
-		} else {
-			return res.render('ebooks', {
-				user: req.session.user,
-				title: 'ebooks',
-				data,
-			})
-		}
-	})
-})
-
-router.get('/search', (req, res) => {
 	const query = req.query.query
-	Ebook.find(
-		{
-			$or: [{ author: { $regex: query } }, { title: { $regex: query } }],
-		},
-		(err, data) => {
+	debug(query)
+	if (query) {
+		Ebook.find(
+			{
+				$or: [
+					{ author: { $regex: query } },
+					{ title: { $regex: query } },
+				],
+			},
+			(err, data) => {
+				if (err) {
+					debug(err)
+					res.send('Something Went Wrong')
+				} else if (data) {
+					return res.render('ebooks', {
+						user: req.session.user,
+						title: 'ebooks',
+						data,
+					})
+				}
+			}
+		)
+	} else {
+		Ebook.find({}, (err, data) => {
 			if (err) {
-				debug(err)
-				res.send('Something Went Wrong')
-			} else if (data) {
+				res.flash('error', 'Something went wrong!')
+			} else {
 				return res.render('ebooks', {
 					user: req.session.user,
 					title: 'ebooks',
 					data,
 				})
 			}
-		}
-	)
+		})
+	}
 })
 
 router.get('/json', (req, res) => {
