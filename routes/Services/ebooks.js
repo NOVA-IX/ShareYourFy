@@ -40,11 +40,12 @@ router.post('/', upload.single('upload'), async (req, res) => {
 						const ebook = new Ebook(req.body)
 						ebook.save((err, result) => {
 							if (err) {
+								debug('err: ')
 								debug(err)
 								res.end()
 							} else if (result) {
 								debug('Added Successfully')
-								res.redirect('/ebook/json')
+								res.redirect('back')
 							}
 						})
 					})

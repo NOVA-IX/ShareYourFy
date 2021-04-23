@@ -12,11 +12,11 @@
     }
 </style>
 
-<form class="modal" style="position: absolute;">
+<form action="/services/ebooks" method="POST" enctype="multipart/form-data" class="modal" style="position: absolute;">
     <span class="close" id="cross3" onclick="formFunction(false)">&times;</span>
     <heading>Upload Ebook Pdf</heading>
     <input type="text" name="title" placeholder="Ebook Name" />
-    <input type="text" name="branch" placeholder="Branch" />
+    <input type="text" name="branch" placeholder="Year" />
     <input type="text" name="author" placeholder="Author's Name" />
     <input type="file" name="upload" />
     <input
@@ -82,7 +82,10 @@
                         <%= item.title%>
                         </h2>
                         <p class="leading-relaxed text-base">
-                            <%= item.description%>
+                            <%= item.author%>
+                        </p>
+                        <p class="leading-relaxed text-base">
+                            <%= item.branch%>
                         </p>
                         <a class="mt-3 text-indigo-400 inline-flex items-center" href= "<%= item.bookUrl%>"
                             >Download
