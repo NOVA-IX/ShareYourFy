@@ -1,0 +1,151 @@
+<div class="profile-page">
+    <div class="profile">
+        <img class="profile-pic" src="./img/ebooks.jpg" alt="Profile Pic">
+        <div class="profile-data">
+            Name<br />
+            name.surname@gmail.com<br />
+            Username<br />
+            Branch-Year
+            <span class="edit"></span>
+        </div>
+    </div>
+    
+    <div class="chatbox">
+        <div class="contacts">
+            <div class="chat-head">Chats</div>
+            <div class="chat-contacts">
+                <div class="contact"><span>Person 01</span><span class="tag">tag01</span></div>
+                <div class="contact"><span>Person 02</span><span class="tag">tag02</span></div>
+                <div class="contact"><span>Person 03</span><span class="tag">tag03</span></div>
+                <div class="contact"><span>Person 04</span><span class="tag">tag04</span></div>
+                <div class="contact"><span>Person 05</span><span class="tag">tag05</span></div>
+                <div class="contact"><span>Person 06</span><span class="tag">tag06</span></div>
+                <div class="contact"><span>Person 07</span><span class="tag">tag07</span></div>
+                <div class="contact"><span>Person 08</span><span class="tag">tag08</span></div>
+                <div class="contact"><span>Person 09</span><span class="tag">tag09</span></div>
+                <div class="contact"><span>Person 10</span><span class="tag">tag10</span></div>
+                <div class="contact"><span>Person 11</span><span class="tag">tag11</span></div>
+                <div class="contact"><span>Person 12</span><span class="tag">tag12</span></div>
+                <div class="contact"><span>Person 13</span><span class="tag">tag13</span></div>
+                <div class="contact"><span>Person 14</span><span class="tag">tag14</span></div>
+            </div>
+        </div>
+        <div class="chat"></div>
+    </div>
+</div>
+
+<style>
+    .profile-page {
+        margin: 0;
+        display: flex;
+    }
+
+    .profile {
+        position: relative;
+        margin: 1em 1em 1em 1em;
+        height: 75vh;
+        width: 26vw;
+        background: #2D3748;
+        border: 2px solid #fff;
+        border-radius: 20px;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .profile-pic {
+        height: 180px;
+        width: 180px;
+        border-radius: 50%;
+        margin-top: 2em;
+        box-shadow: 0 8px 15px 0 rgba(0, 0, 0, 0.2), 0 10px 30px 0 rgba(0, 0, 0, 0.19);
+    }
+
+    .profile-data {
+        color: blanchedalmond;
+        font-size: 1.3em;
+        text-align: center;
+    }
+
+    .edit {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        height: 40px;
+        width: 40px;
+        background-color: #667EEA;
+        border-radius: 50%;
+    }
+
+    .chatbox {
+        height: 80vh;
+        width: 70vw;
+        background: #2D3748;
+        border-radius: 20px;
+        display: flex;
+    }
+
+    .chat {
+        position: relative;
+        height: 100%;
+        width: 65%;
+    }
+
+    .contacts {
+        position: relative;
+        height: 100%;
+        width: 35%;
+        display: flex;
+        flex-direction: column;
+        overflow-x: hidden;
+    }
+
+    .chat-head {
+        position: absolute;
+        top: 0;
+        height: 15%;
+        width: 100%;
+        font-size: 1.5em;
+        padding: 20px 0px 0px 20px;
+        color: aliceblue;
+        background: #667eea;
+        border-top-left-radius: 20px;
+    }
+
+    .chat-contacts {
+        height: 100%;
+        width: 100%;
+        padding-top: 75px;
+        display: flex;
+        flex-direction: column;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+    .contact {
+        width: 90%;
+        margin-top: 10px;
+        background: #A0AEC0;
+        display: flex;
+        justify-content: space-between;
+        align-self: center;
+        padding: 13px 10px 13px 10px;
+        border-radius: 10px;
+    }
+
+    .tag {
+        border: 3px solid #667eea;
+        border-radius: 30%;
+        padding: 0px 2px 0px 2px;
+    }
+
+    div::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    div::-webkit-scrollbar-thumb {
+        background-color: #1A202C;
+        border-radius: 20px;
+    }
+</style>

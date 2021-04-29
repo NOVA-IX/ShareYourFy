@@ -11,6 +11,10 @@ router.get('/', (req, res) => {
 	res.render('index', { user: req.session.user, title: 'Home' })
 })
 
+router.get('/profile', (req, res) => {
+	res.render('profile', { user: req.session.user, title: 'Profile' })
+})
+
 router.get('/index', (req, res) => {
 	res.redirect('/')
 })
