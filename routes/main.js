@@ -1,5 +1,7 @@
 const express = require('express')
 const contact = require('./contact')
+const profile = require('./profile')
+
 const router = express.Router()
 
 var sessionChecker = (req, res, next) => {
@@ -11,9 +13,7 @@ router.get('/', (req, res) => {
 	res.render('index', { user: req.session.user, title: 'Home' })
 })
 
-router.get('/profile', (req, res) => {
-	res.render('profile', { user: req.session.user, title: 'Profile' })
-})
+router.use('/profile', profile)
 
 router.get('/index', (req, res) => {
 	res.redirect('/')
