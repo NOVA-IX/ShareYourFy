@@ -29,8 +29,26 @@ const UserSchema = new mongoose.Schema({
 	},
 	inbox: [
 		{
-			type: mongoose.Schema.Types.ObjectId,
-			ref: 'inbox',
+			from: {
+				type: mongoose.Schema.Types.ObjectId,
+				ref: 'User',
+				required: true,
+			},
+			to: {
+				type: mongoose.Schema.Types.ObjectId,
+				ref: 'User',
+				required: true,
+			},
+			message: [
+				{
+					type: String,
+					time: Date.now(),
+				},
+			],
+			tag: {
+				type: String,
+				required: true,
+			},
 		},
 	],
 	//give different access rights if admin or not

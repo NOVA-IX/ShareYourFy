@@ -6,8 +6,7 @@ const services = require('./routes/Services')
 const main = require('./routes/main')
 const session = require('express-session')
 const cookieParser = require('cookie-parser')
-var expressLayouts = require('express-ejs-layouts')
-const { fetchImage } = require('./utils/fetchImage')
+const expressLayouts = require('express-ejs-layouts')
 const MongoStore = require('connect-mongodb-session')(session)
 const flash = require('connect-flash')
 const debug = require('debug')('sfy:server')
@@ -66,4 +65,80 @@ app.use('/', main)
 
 //server
 const port = process.env.PORT || 5001
-app.listen(port, () => debug(`Server listening on ${port}`))
+
+const server = app.listen(port, () => debug(`Server listening on ${port}`))
+
+const io = require('socket.io')(server)
+
+var users = []
+
+io.sockets.on('connection', function (socket) {
+	socket.on('user_connected', (id) => {
+		users[id] = socket.id
+		console.log(id)
+	})
+
+	// socket.on('adduser', function (data) {
+	// var username = data.username
+	// var room = data.room
+	// if (rooms.indexOf(room) != -1) {
+	// 	socket.username = username
+	// 	socket.room = room
+	// 	usernames[username] = username
+	// 	socket.join(room)
+	// 	socket.emit(
+	// 		'updatechat',
+	// 		'SERVER',
+	// 		'You are connected. Start chatting'
+	// 	)
+	// 	socket.broadcast
+	// 		.to(room)
+	// 		.emit(
+	// 			'updatechat',
+	// 			'SERVER',
+	// 			username + ' has connected to this room'
+	// 		)
+	// } else {
+	// 	socket.emit('updatechat', 'SERVER', 'Please enter valid code.')
+	// }
+	// })
+
+	socket.on('createroom', function (data) {
+		var new_room = ('' + Math.random()).substring(2, 7)
+		rooms.push(new_room)
+		data.room = new_room
+		socket.emit(
+			'updatechat',
+			'SERVER',
+			'Your room is ready, invite someone using this ID:' + new_room
+		)
+		socket.emit('roomcreated', data)
+	})
+
+	socket.on('sendchat', function (data) {
+		io.sockets.in(socket.room).emit('updatechat', socket.username, data)
+	})
+
+	//user sends the message
+	// things to collect:-
+	// the selected chat id
+	// my id
+	// message
+	// things to do:
+	// render the message
+
+	// server side
+
+	// socket.on('disconnect', function () {
+	// 	delete usernames[socket.username]
+	// 	io.sockets.emit('updateusers', usernames)
+	// 	if (socket.username !== undefined) {
+	// 		socket.broadcast.emit(
+	// 			'updatechat',
+	// 			'SERVER',
+	// 			socket.username + ' has disconnected'
+	// 		)
+	// 		socket.leave(socket.room)
+	// 	}
+	// })
+})

@@ -1,11 +1,17 @@
+const debug = require('debug')('syf:profile')
 const express = require('express')
+const { findMessages } = require('../utils/saveMessage')
 
 const router = express.Router()
 
 router.get('/', (req, res) => {
-	res.render('profile', { user: req.session.user, title: 'Profile' })
+	const messages = findMessages(req.session.user.id)
+	debug(messages)
+	res.render('profile', {
+		user: req.session.user,
+		title: 'Profile',
+		messages,
+	})
 })
-
-router.post('/', (req, res) => {})
 
 module.exports = router
