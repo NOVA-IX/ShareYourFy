@@ -17,18 +17,7 @@
 		</div>
 		<div class="chat">
 			<div class="messages">
-				<div class="msg">
-					<img src="./img/ED.jpg" alt="YOU">
-					<p>Hello. How are you today?</p>
-					<span class="time-right">11:00</span>
-				</div>
-
-				<div class="msg darker">
-					<img src="./img/ebooks.jpg" alt="ME" class="right">
-					<p>Hey! I'm fine. Thanks for asking!</p>
-					<span class="time-left">11:01</span>
-				</div>
-
+				<h2 style="color: rgb(216, 216, 216);">Start a conversation to see it here!</h2>
 			</div>
 			<div class="msg-box">
 				<div class="msg-emo">
@@ -56,24 +45,47 @@
 
 
 <script>
+
+	const tooltip = document.querySelector('.tooltip')
+	
+	function toggleEmo() {
+		tooltip.classList.toggle('shown')
+	}
+
+	// chat thing
 	const socket = io()
 
 	const chat = document.querySelector('.chat-form')
 	const Input = document.querySelector('.chat-input')
 
 	chat.addEventListener('submit', (event) => {
+		
 		event.preventDefault()
-		console.log(Input.value)
-		socket.emit('chat', Input.value)
+		const now = new Date();
+		const time = `${now.getHours()}:${now.getMinutes()}`
+		renderMyMessage(Input.value,time)
+		socket.emit('message', Input.value,time)
 		Input.value = ''
 	})
-	const user_id =  "<%-req.session.user._id%>"
-	socket.emit('user_connected',user_id)
 
-	const tooltip = document.querySelector('.tooltip')
-	
-	function toggleEmo() {
-		tooltip.classList.toggle('shown')
+	socket.on('server_message',(message,time)=>{
+		renderOtherMessage(message,time)
+	})
+
+	function renderMyMessage(message,time){
+		const messagesDiv = document.querySelector('.messages')
+		const content = document.createElement("div")
+		content.className = "msg"
+		content.innerHTML = `<img src=\"./img/ED.jpg\" alt=\"YOU\"> <p>${message}</p> <span class=\"time-right\">${time}</span>`
+		messagesDiv.appendChild(content)
+	}
+
+	function renderOtherMessage(message,time){
+		const messagesDiv = document.querySelector('.messages')
+		const content = document.createElement("div")
+		content.className = "msg darker"
+		content.innerHTML = `<img src=\"./img/ED.jpg\" alt=\"YOU\"> <p>${message}</p> <span class=\"time-right\">${time}</span>`
+		messagesDiv.appendChild(content)
 	}
 </script>
 <script type="module" src="https://cdn.jsdelivr.net/npm/emoji-picker-element@^1/index.js"></script>

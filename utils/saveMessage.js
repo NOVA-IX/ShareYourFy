@@ -15,7 +15,6 @@ module.exports.findMessages = (data) => {
 	User.find(
 		{ inbox: { $elemMatch: { to: data, from: data } } },
 		(err, result) => {
-			debug(result)
 			return result
 		}
 	)
