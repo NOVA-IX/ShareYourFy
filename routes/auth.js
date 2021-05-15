@@ -32,7 +32,8 @@ router.post('/register', async (req, res) => {
 		res.redirect('back')
 	} else if (
 		!validator.contains(req.body.email, '@siesgst.ac.in') &&
-		!validator.contains(req.body.email, '@gst.sies.edu.in')
+		!validator.contains(req.body.email, '@gst.sies.edu.in') &&
+		!validator.contains(req.body.email, '@sies.edu.in')
 	) {
 		req.flash(
 			'error',
