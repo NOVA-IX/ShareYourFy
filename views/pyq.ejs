@@ -10,6 +10,16 @@
     }
 </style>
 
+<form action="/services/pyq" method="POST" enctype="multipart/form-data" class="modal" style="position: absolute; z-index: 3;">
+	<span class="close" id="cross3" onclick="formFunction(false)">&times;</span>
+	<heading>Previous Year<br />Question Papers</heading>
+	<input type="text" name="title" placeholder="Year" required/>
+	<input type="text" name="description" placeholder="Branch-Semester" required/>
+	<label for="upload">*Upload pdf of question paper</label>
+	<input type="file" name="upload" multiple/>
+	<input type="submit" value="Upload" style="background: #667EEA; color: floralwhite; cursor: pointer" />
+</form>
+
 <div class="container px-5 mx-auto" style="padding-top: 2rem; padding-bottom: 2rem">
     <div class="flex flex-col sm:flex-row sm:items-center items-start mx-auto"
         style="display: flex; align-items: center">
@@ -34,3 +44,74 @@
         </div>
     </div>
 </section>
+
+<style>
+    .modal {
+        width: 22em;
+        height: 25em;
+        background: #1a202c;
+        border: 2px solid #ffffff;
+        border-radius: 10px;
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .modal > heading {
+        text-align: center;
+        margin-bottom: 1em;
+        font-size: 1.5em;
+        color: #667eea;
+        font-weight: bold;
+    }
+
+	.modal > label {
+		text-align: center;
+		margin: 0.5em 0em 0.2em 0em;
+		font-size: 1em;
+		color: #667EEA;
+	}
+
+    .modal > span {
+        text-align: right;
+        margin-right: 1em;
+        margin-top: -1em;
+        font-size: 1.6em;
+        font-weight: lighter;
+        color: white;
+    }
+
+    .modal > span:hover {
+        font-weight: bolder;
+        cursor: default;
+        transform: skew(-1deg, -1deg);
+    }
+
+    .modal > input {
+        color: #667eea;
+        font-size: 1em;
+        padding: 5px;
+        margin: 0 3em 1em 3em;
+        border-radius: 5px;
+    }
+
+    .show-form {
+        display: flex;
+    }
+
+	::placeholder {
+		color: black !important;
+	}
+</style>
+
+<script>
+	let form = document.querySelector('form')
+
+	function formFunction(display) {
+		if (display) form.classList.add('show-form')
+		else form.classList.remove('show-form')
+	}
+</script>
