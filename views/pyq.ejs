@@ -13,8 +13,9 @@
 <form action="/services/pyq" method="POST" enctype="multipart/form-data" class="modal" style="position: absolute; z-index: 3;">
 	<span class="close" id="cross3" onclick="formFunction(false)">&times;</span>
 	<heading>Previous Year<br />Question Papers</heading>
-	<input type="text" name="title" placeholder="Year" required/>
-	<input type="text" name="description" placeholder="Branch-Semester" required/>
+    <input type="text" name="subject" placeholder="Subject" required/>
+	<input type="text" name="sem" placeholder="Sem" required/>
+	<input type="text" name="branch" placeholder="Branch" required/>
 	<label for="upload">*Upload pdf of question paper</label>
 	<input type="file" name="upload" multiple/>
 	<input type="submit" value="Upload" style="background: #667EEA; color: floralwhite; cursor: pointer" />
@@ -37,8 +38,28 @@
     <div class="container px-5 py-24 mx-auto flex">
         <div class="flex flex-wrap -m-4">
             <div>
-                <div class="p-4 lg:w-1/1" style="display: flex; flex-wrap: wrap; justify-content: space-evenly; align-items: stretch; justify-items: stretch;">
-                    * Under Production *
+                <div class="p-4 lg:w-1/1" style="display: flex; flex-wrap: wrap; justify-content: space-evenly; align-items: stretch; justify-items: stretch">
+                    <% data.forEach(item=> { %>
+                        <div class="flex border-2 rounded-lg border-gray-800 p-8 sm:flex-row flex-col" style="margin: 10px">
+                            <div class="flex-grow">
+                                <h2 class="text-white text-lg title-font font-medium mb-3">
+                                    <%-item.subject%>
+                                </h2>
+                                <h2 class="text-white text-lg title-font font-medium mb-3">
+                                    <%-item.sem%>
+                                </h2>
+                                <p class="leading-relaxed text-base">
+                                    <%-item.branch%>
+                                </p>
+                                <a class="mt-3 text-indigo-400 inline-flex items-center" href="<%-item.paperUrl%>">Download
+                                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
+                                        <path d="M5 12h14M12 5l7 7-7 7"></path>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    <% }) %>
                 </div>
             </div>
         </div>
