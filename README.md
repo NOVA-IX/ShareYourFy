@@ -1,7 +1,7 @@
 # ShareYourFy
 A platform to share stuffs to help newbies of FE
 
-ShareYourFy: https://shareyourfyback.herokuapp.com/
+ShareYourFy: https://shareyourfy.herokuapp.com/
 
 # Install instruction
 - clone repo
